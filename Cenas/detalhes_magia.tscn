@@ -1,0 +1,115 @@
+[gd_scene load_steps=2 format=3 uid="uid://0psvsydpvmql"]
+
+[ext_resource type="Script" path="res://Scripts/detalhes_magia.gd" id="1_ur63k"]
+
+[node name="DetalhesMagia" type="Control" node_paths=PackedStringArray("labelNome", "labelGrau", "labelArea1", "labelArea2", "labelTesteRes", "labelCD", "labelTempoExec", "labelDuracao", "labelComponentes", "labelAOE", "labelAlcance", "labelAtaque", "labelCusto", "labelDescricao")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ur63k")
+labelNome = NodePath("Panel/VBoxLabelsDesc/labelNome")
+labelGrau = NodePath("Panel/VBoxLabelsDesc/labelGrau")
+labelArea1 = NodePath("Panel/VBoxLabelsDesc/labelArea1")
+labelArea2 = NodePath("Panel/VBoxLabelsDesc/labelArea2")
+labelTesteRes = NodePath("Panel/VBoxLabelsDesc/labelTesteRes")
+labelCD = NodePath("Panel/VBoxLabelsDesc/labelCD")
+labelTempoExec = NodePath("Panel/VBoxLabelsDesc/labelTempoExec")
+labelDuracao = NodePath("Panel/VBoxLabelsDesc/labelDuracao")
+labelComponentes = NodePath("Panel/VBoxLabelsDesc/labelComponentes")
+labelAOE = NodePath("Panel/VBoxLabelsDesc/labelAoE")
+labelAlcance = NodePath("Panel/VBoxLabelsDesc/labelAlcance")
+labelAtaque = NodePath("Panel/VBoxLabelsDesc/labelAtaque")
+labelCusto = NodePath("Panel/VBoxLabelsDesc/labelCusto")
+labelDescricao = NodePath("Panel/VBoxLabelsDesc/richTextLabelDescricao")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxLabelsDesc" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.193042
+anchor_top = 0.100309
+anchor_right = 0.747042
+anchor_bottom = 0.879778
+offset_left = -0.384033
+offset_right = 0.407959
+offset_bottom = -0.0960083
+metadata/_edit_use_anchors_ = true
+
+[node name="labelNome" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Nome:"
+
+[node name="labelGrau" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Grau: "
+
+[node name="labelArea1" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Área(s) Primária(s):"
+
+[node name="labelArea2" type="Label" parent="Panel/VBoxLabelsDesc"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+text = "Área(s) Secundária(s):"
+autowrap_mode = 3
+
+[node name="labelTesteRes" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Teste de Resistência:"
+
+[node name="labelCD" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Classe de Dificuldade:"
+
+[node name="labelTempoExec" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Tempo de Execução:"
+
+[node name="labelDuracao" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Duração:"
+
+[node name="labelComponentes" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Componentes:"
+
+[node name="labelAoE" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Área de Efeito:"
+
+[node name="labelAlcance" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Alcance:"
+
+[node name="labelAtaque" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Ataque:"
+
+[node name="labelCusto" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Custo: "
+
+[node name="richTextLabelDescricao" type="RichTextLabel" parent="Panel/VBoxLabelsDesc"]
+custom_minimum_size = Vector2(400, 133)
+layout_mode = 2
+text = "Descrição:"
+
+[node name="buttonVoltar" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 806.0
+offset_top = 300.0
+offset_right = 861.0
+offset_bottom = 331.0
+text = "Voltar"
+
+[connection signal="pressed" from="Panel/buttonVoltar" to="." method="_on_button_voltar_pressed"]

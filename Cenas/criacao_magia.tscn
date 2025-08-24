@@ -1,0 +1,418 @@
+[gd_scene load_steps=26 format=3 uid="uid://bxdxcwb8xssgk"]
+
+[ext_resource type="Script" path="res://Scripts/criacao_magia.gd" id="1_o0f2x"]
+[ext_resource type="Texture2D" uid="uid://c8u3b62nqx4tw" path="res://Assests/Icones/AGUA_CARVALHO.png" id="2_34kql"]
+[ext_resource type="Texture2D" uid="uid://dcaelbx4tpwrh" path="res://Assests/Icones/terra carvalho.png" id="3_41kav"]
+[ext_resource type="Texture2D" uid="uid://dmr55mrjwoqs8" path="res://Assests/Icones/transformacao_carvalho.png" id="3_qivge"]
+[ext_resource type="Texture2D" uid="uid://bmneiweusvcp1" path="res://Assests/Icones/ar carvalho.png" id="4_ht7cj"]
+[ext_resource type="Texture2D" uid="uid://brt2hmdmxpequ" path="res://Assests/Icones/alma carvalho.png" id="5_074ft"]
+[ext_resource type="Texture2D" uid="uid://b0slb16fa20q4" path="res://Assests/Icones/mente carvalho.png" id="6_fsqop"]
+[ext_resource type="Texture2D" uid="uid://coguyj7yme313" path="res://Assests/Icones/natureza carvalho.png" id="8_md8t3"]
+[ext_resource type="Texture2D" uid="uid://c5nab0dqjvgun" path="res://Assests/Icones/metal_carvalho.png" id="9_syaj2"]
+[ext_resource type="Texture2D" uid="uid://b71ttyr184lb4" path="res://Assests/Icones/sintropia carvalho.png" id="10_vu8n2"]
+[ext_resource type="Texture2D" uid="uid://cb8rhtdcmhl1j" path="res://Assests/Icones/fogo carvalho.png" id="11_c7nww"]
+[ext_resource type="Texture2D" uid="uid://bejjecdisf6wg" path="res://Assests/Icones/entropia carvalho.png" id="12_wbtbi"]
+[ext_resource type="Texture2D" uid="uid://m6350vop78qh" path="res://Assests/Icones/casca carvalho.png" id="13_00n18"]
+[ext_resource type="Texture2D" uid="uid://cx1miqqi3wn5" path="res://Assests/Icones/senso carvalho.png" id="14_khitw"]
+[ext_resource type="Texture2D" uid="uid://d1aiasm7c2xii" path="res://Assests/Icones/emoção carvalho.png" id="15_tw3im"]
+[ext_resource type="Texture2D" uid="uid://cmrma305pspa6" path="res://Assests/Icones/logica carvalho.png" id="16_grkph"]
+[ext_resource type="Texture2D" uid="uid://dn4wcjkmqr13t" path="res://Assests/Icones/alcance_cone_carvalho.png" id="17_hqt53"]
+[ext_resource type="Texture2D" uid="uid://dh25kpglghfop" path="res://Assests/Icones/alcance_cilindro_carvalho.png" id="18_ipxa2"]
+[ext_resource type="Texture2D" uid="uid://cfpy6kns8ypn" path="res://Assests/Icones/alcance_linha_carvalho.png" id="19_20pnp"]
+[ext_resource type="Texture2D" uid="uid://cytx66w68ns0s" path="res://Assests/Icones/area_circulo_carvalho.png" id="20_6mq3r"]
+[ext_resource type="Texture2D" uid="uid://bnt8obdttlp4f" path="res://Assests/Icones/area_cubo_carvalho.png" id="21_devn5"]
+[ext_resource type="Texture2D" uid="uid://4e2n1sg20a6w" path="res://Assests/Icones/alcance_nulo_carvalho.png" id="22_sumtn"]
+[ext_resource type="Texture2D" uid="uid://nghk6g1vbli8" path="res://Assests/Icones/componente_vocal_carvalho.png" id="23_xhrm1"]
+[ext_resource type="Texture2D" uid="uid://c6jurebj03t82" path="res://Assests/Icones/componente_somatico_carvalho.png" id="24_5uv0h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_073b3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="CriacaoMagia" type="Control" node_paths=PackedStringArray("optionButtonExec", "lineNome", "lineTesteRes", "lineAlcance", "lineDuracao", "textDescricao", "labelNome", "labelGrau", "labelArea1", "labelArea2", "labelTesteRes", "labelTempoExec", "labelDuracao", "labelComponentes", "labelAtaque", "labelCusto", "labelCD", "labelAlcance", "labelAOE", "hSliderGrau")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o0f2x")
+optionButtonExec = NodePath("Panel/VBoxSeletor1/optionTempoExec")
+lineNome = NodePath("Panel/VBoxSeletor1/LineNome")
+lineTesteRes = NodePath("Panel/VBoxSeletor1/LineTesteRes")
+lineAlcance = NodePath("Panel/VBoxSeletor1/LineAlcance")
+lineDuracao = NodePath("Panel/VBoxSeletor2/HBoxDuracao/LineDuracao")
+textDescricao = NodePath("Panel/textDescricao")
+labelNome = NodePath("Panel/VBoxLabelsDesc/labelNome")
+labelGrau = NodePath("Panel/VBoxLabelsDesc/labelGrau")
+labelArea1 = NodePath("Panel/VBoxLabelsDesc/labelArea1")
+labelArea2 = NodePath("Panel/VBoxLabelsDesc/labelArea2")
+labelTesteRes = NodePath("Panel/VBoxLabelsDesc/labelTesteRes")
+labelTempoExec = NodePath("Panel/VBoxLabelsDesc/labelTempoExec")
+labelDuracao = NodePath("Panel/VBoxLabelsDesc/labelDuracao")
+labelComponentes = NodePath("Panel/VBoxLabelsDesc/labelComponentes")
+labelAtaque = NodePath("Panel/VBoxLabelsDesc/labelAtaque")
+labelCusto = NodePath("Panel/VBoxLabelsDesc/labelCusto")
+labelCD = NodePath("Panel/VBoxLabelsDesc/labelCD")
+labelAlcance = NodePath("Panel/labelAlcance")
+labelAOE = NodePath("Panel/labelAOE")
+hSliderGrau = NodePath("Panel/VBoxSeletor1/hSliderGrau")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Titulo" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.035
+offset_bottom = 0.32
+grow_horizontal = 2
+text = "Criação de Feitiços"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxSeletor1" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.135
+anchor_top = 0.128
+anchor_right = 0.293
+anchor_bottom = 0.793
+offset_left = 0.479996
+offset_top = 0.0559998
+offset_right = 0.463989
+offset_bottom = -42.864
+theme_override_constants/separation = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="LineNome" type="LineEdit" parent="Panel/VBoxSeletor1"]
+custom_minimum_size = Vector2(182, 38)
+layout_mode = 2
+placeholder_text = "Nome"
+
+[node name="hSliderGrau" type="HSlider" parent="Panel/VBoxSeletor1"]
+custom_minimum_size = Vector2(182, 38)
+layout_mode = 2
+min_value = 1.0
+max_value = 9.0
+value = 1.0
+tick_count = 9
+ticks_on_borders = true
+
+[node name="optionArea1" type="OptionButton" parent="Panel/VBoxSeletor1"]
+custom_minimum_size = Vector2(182, 38)
+layout_mode = 2
+allow_reselect = true
+item_count = 5
+popup/item_0/text = "Água"
+popup/item_0/icon = ExtResource("2_34kql")
+popup/item_1/text = "Terra"
+popup/item_1/icon = ExtResource("3_41kav")
+popup/item_1/id = 1
+popup/item_2/text = "Ar"
+popup/item_2/icon = ExtResource("4_ht7cj")
+popup/item_2/id = 2
+popup/item_3/text = "Alma"
+popup/item_3/icon = ExtResource("5_074ft")
+popup/item_3/id = 3
+popup/item_4/text = "Mente"
+popup/item_4/icon = ExtResource("6_fsqop")
+popup/item_4/id = 4
+
+[node name="optionArea2" type="OptionButton" parent="Panel/VBoxSeletor1"]
+custom_minimum_size = Vector2(182, 38)
+layout_mode = 2
+allow_reselect = true
+item_count = 10
+popup/item_0/text = "Transformação"
+popup/item_0/icon = ExtResource("3_qivge")
+popup/item_1/text = "Natureza"
+popup/item_1/icon = ExtResource("8_md8t3")
+popup/item_1/id = 1
+popup/item_2/text = "Metal"
+popup/item_2/icon = ExtResource("9_syaj2")
+popup/item_2/id = 2
+popup/item_3/text = "Sintropia"
+popup/item_3/icon = ExtResource("10_vu8n2")
+popup/item_3/id = 3
+popup/item_4/text = "Fogo"
+popup/item_4/icon = ExtResource("11_c7nww")
+popup/item_4/id = 4
+popup/item_5/text = "Entropia"
+popup/item_5/icon = ExtResource("12_wbtbi")
+popup/item_5/id = 5
+popup/item_6/text = "Casca"
+popup/item_6/icon = ExtResource("13_00n18")
+popup/item_6/id = 6
+popup/item_7/text = "Senso"
+popup/item_7/icon = ExtResource("14_khitw")
+popup/item_7/id = 7
+popup/item_8/text = "Emoção"
+popup/item_8/icon = ExtResource("15_tw3im")
+popup/item_8/id = 8
+popup/item_9/text = "Lógica"
+popup/item_9/icon = ExtResource("16_grkph")
+popup/item_9/id = 9
+
+[node name="optionTempoExec" type="OptionButton" parent="Panel/VBoxSeletor1"]
+custom_minimum_size = Vector2(182, 38)
+layout_mode = 2
+item_count = 4
+popup/item_0/text = "Ação"
+popup/item_1/text = "Ação Bônus"
+popup/item_1/id = 1
+popup/item_2/text = "Reação"
+popup/item_2/id = 2
+popup/item_3/text = "Ação Completa"
+popup/item_3/id = 3
+
+[node name="LineAlcance" type="LineEdit" parent="Panel/VBoxSeletor1"]
+custom_minimum_size = Vector2(182, 38)
+layout_mode = 2
+placeholder_text = "Alcance"
+
+[node name="optionFormato" type="OptionButton" parent="Panel/VBoxSeletor1"]
+custom_minimum_size = Vector2(182, 38)
+layout_mode = 2
+item_count = 6
+popup/item_0/text = "Cone"
+popup/item_0/icon = ExtResource("17_hqt53")
+popup/item_1/text = "Cilindro"
+popup/item_1/icon = ExtResource("18_ipxa2")
+popup/item_1/id = 1
+popup/item_2/text = "Linha"
+popup/item_2/icon = ExtResource("19_20pnp")
+popup/item_2/id = 2
+popup/item_3/text = "Esfera"
+popup/item_3/icon = ExtResource("20_6mq3r")
+popup/item_3/id = 3
+popup/item_4/text = "Cubo"
+popup/item_4/icon = ExtResource("21_devn5")
+popup/item_4/id = 4
+popup/item_5/text = "N/A"
+popup/item_5/icon = ExtResource("22_sumtn")
+popup/item_5/id = 5
+
+[node name="LineTesteRes" type="LineEdit" parent="Panel/VBoxSeletor1"]
+custom_minimum_size = Vector2(182, 38)
+layout_mode = 2
+placeholder_text = "Teste de Resistência"
+
+[node name="buttonCriarMagia" type="Button" parent="Panel/VBoxSeletor1"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Criar Magia"
+metadata/_edit_use_anchors_ = true
+
+[node name="textDescricao" type="TextEdit" parent="Panel"]
+custom_minimum_size = Vector2(484, 123)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41
+anchor_top = 0.278
+anchor_right = 0.83
+anchor_bottom = 0.468
+offset_left = -0.320038
+offset_top = -0.144012
+offset_right = -0.160034
+offset_bottom = -0.264008
+placeholder_text = "Descrição"
+wrap_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="panelLabel1" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.007
+anchor_top = 0.127
+anchor_right = 0.134
+anchor_bottom = 0.724
+offset_left = -0.0640001
+offset_top = -0.296005
+offset_right = -0.368011
+offset_bottom = -0.152039
+theme_override_styles/panel = SubResource("StyleBoxFlat_073b3")
+metadata/_edit_use_anchors_ = true
+
+[node name="labelGrau" type="Label" parent="Panel/panelLabel1"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 55.0
+offset_right = 144.0
+offset_bottom = 78.0
+text = "Grau:"
+
+[node name="labelAreaPrimaria" type="Label" parent="Panel/panelLabel1"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 104.0
+offset_right = 146.0
+offset_bottom = 127.0
+text = "Área Primária:"
+
+[node name="labelAreaSecundaria" type="Label" parent="Panel/panelLabel1"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 154.0
+offset_right = 147.0
+offset_bottom = 177.0
+text = "Área Secundária:"
+
+[node name="labelAreaEfeito" type="Label" parent="Panel/panelLabel1"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 308.0
+offset_right = 147.0
+offset_bottom = 331.0
+text = "Área Efeito:"
+
+[node name="labelTempoExec" type="Label" parent="Panel/panelLabel1"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 206.0
+offset_right = 150.0
+offset_bottom = 229.0
+text = "Tempo de Execução:"
+
+[node name="labelAlcance" type="Label" parent="Panel"]
+layout_mode = 2
+offset_left = 778.0
+offset_top = 534.0
+offset_right = 892.0
+offset_bottom = 557.0
+text = "Alcance:"
+
+[node name="labelAOE" type="Label" parent="Panel"]
+layout_mode = 2
+offset_left = 776.0
+offset_top = 572.0
+offset_right = 919.0
+offset_bottom = 595.0
+text = "Área(s) de Efeito:"
+
+[node name="VBoxSeletor2" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.308
+anchor_top = 0.12
+anchor_right = 0.569
+anchor_bottom = 0.256
+offset_left = 0.18396
+offset_top = 0.239998
+offset_right = -0.488037
+offset_bottom = 0.112
+theme_override_constants/separation = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxDuracao" type="HBoxContainer" parent="Panel/VBoxSeletor2"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Panel/VBoxSeletor2/HBoxDuracao"]
+visible = false
+custom_minimum_size = Vector2(114, 23)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineDuracao" type="LineEdit" parent="Panel/VBoxSeletor2/HBoxDuracao"]
+custom_minimum_size = Vector2(182, 38)
+layout_mode = 2
+size_flags_horizontal = 10
+placeholder_text = "Duração"
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxComponentes" type="HBoxContainer" parent="Panel/VBoxSeletor2"]
+custom_minimum_size = Vector2(300, 38)
+layout_mode = 2
+
+[node name="labelComponentesButton" type="Label" parent="Panel/VBoxSeletor2/HBoxComponentes"]
+custom_minimum_size = Vector2(114, 23)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Componentes:"
+
+[node name="optionComponentes" type="OptionButton" parent="Panel/VBoxSeletor2/HBoxComponentes"]
+custom_minimum_size = Vector2(182, 38)
+layout_mode = 2
+size_flags_horizontal = 10
+item_count = 2
+popup/item_0/text = "Vocal"
+popup/item_0/icon = ExtResource("23_xhrm1")
+popup/item_1/text = "Somático"
+popup/item_1/icon = ExtResource("24_5uv0h")
+popup/item_1/id = 1
+
+[node name="VBoxLabelsDesc" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.417
+anchor_top = 0.5
+anchor_right = 0.971
+anchor_bottom = 0.977
+offset_left = -0.384033
+offset_right = 0.407959
+offset_bottom = -0.0960083
+metadata/_edit_use_anchors_ = true
+
+[node name="labelNome" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Nome:"
+
+[node name="labelGrau" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Grau: "
+
+[node name="labelArea1" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Área(s) Primária(s):"
+
+[node name="labelArea2" type="Label" parent="Panel/VBoxLabelsDesc"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+text = "Área(s) Secundária(s):"
+autowrap_mode = 3
+
+[node name="labelTesteRes" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Teste de Resistência:"
+
+[node name="labelCD" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Classe de Dificuldade:"
+
+[node name="labelTempoExec" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Tempo de Execução:"
+
+[node name="labelDuracao" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Duração:"
+
+[node name="labelComponentes" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Componentes:"
+
+[node name="labelAtaque" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Ataque:"
+
+[node name="labelCusto" type="Label" parent="Panel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Custo: "
+
+[connection signal="text_changed" from="Panel/VBoxSeletor1/LineNome" to="." method="_on_line_nome_text_changed"]
+[connection signal="value_changed" from="Panel/VBoxSeletor1/hSliderGrau" to="." method="_on_h_slider_value_changed"]
+[connection signal="item_selected" from="Panel/VBoxSeletor1/optionArea1" to="." method="_on_option_area_1_item_selected"]
+[connection signal="item_selected" from="Panel/VBoxSeletor1/optionArea2" to="." method="_on_option_area_2_item_selected"]
+[connection signal="item_selected" from="Panel/VBoxSeletor1/optionTempoExec" to="." method="_on_option_tempo_exec_item_selected"]
+[connection signal="text_changed" from="Panel/VBoxSeletor1/LineAlcance" to="." method="_on_line_alcance_text_changed"]
+[connection signal="item_selected" from="Panel/VBoxSeletor1/optionFormato" to="." method="_on_option_formato_item_selected"]
+[connection signal="text_changed" from="Panel/VBoxSeletor1/LineTesteRes" to="." method="_on_line_teste_res_text_changed"]
+[connection signal="pressed" from="Panel/VBoxSeletor1/buttonCriarMagia" to="." method="_on_button_criar_magia_pressed"]
+[connection signal="text_changed" from="Panel/VBoxSeletor2/HBoxDuracao/LineDuracao" to="." method="_on_line_duracao_text_changed"]
+[connection signal="item_selected" from="Panel/VBoxSeletor2/HBoxComponentes/optionComponentes" to="." method="_on_option_componentes_item_selected"]

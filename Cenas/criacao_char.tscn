@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://ki7i16pcbcxx"]
+
+[ext_resource type="Script" path="res://Scripts/criacao_char.gd" id="1_7uugi"]
+
+[node name="CriacaoChar" type="Control" node_paths=PackedStringArray("textNomeChar", "textAtributoConj", "textBBA")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7uugi")
+textNomeChar = NodePath("Panel/CenterContainer/VBoxContainer/textNome")
+textAtributoConj = NodePath("Panel/CenterContainer/VBoxContainer/textAtributoCon")
+textBBA = NodePath("Panel/CenterContainer/VBoxContainer/textBBA")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="labelCriacaoChar" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.035
+offset_bottom = 0.32
+grow_horizontal = 2
+text = "Criação de Personagem"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer"]
+layout_mode = 2
+
+[node name="textNome" type="TextEdit" parent="Panel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(263, 43)
+layout_mode = 2
+placeholder_text = "Nome
+"
+
+[node name="textAtributoCon" type="TextEdit" parent="Panel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(263, 43)
+layout_mode = 2
+tooltip_text = "Modificador do seu atributo de conjuração"
+placeholder_text = "Modificador do Atributo
+"
+
+[node name="textBBA" type="TextEdit" parent="Panel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(263, 43)
+layout_mode = 2
+placeholder_text = "Bônus Base de Ataque"
+
+[node name="buttonCriarChar" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Criar Personagem"
+
+[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/buttonCriarChar" to="." method="_on_button_criar_char_pressed"]
