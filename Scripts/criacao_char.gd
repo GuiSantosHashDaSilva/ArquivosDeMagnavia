@@ -1,8 +1,10 @@
 extends Control
 
+#region variáveis exportadas
 @export var textNomeChar: TextEdit;
 @export var textAtributoConj: TextEdit;
 @export var textBBA: TextEdit;
+#endregion
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

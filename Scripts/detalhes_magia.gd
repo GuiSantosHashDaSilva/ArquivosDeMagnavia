@@ -1,6 +1,6 @@
 extends Control
 
-#region varáveis exportadas
+#region variáveis exportadas
 @export var labelNome: Label;
 @export var labelGrau: Label;
 @export var labelArea1: Label;
