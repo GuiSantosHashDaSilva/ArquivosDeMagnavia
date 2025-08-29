@@ -38,7 +38,7 @@ grow_vertical = 2
 script = ExtResource("1_o0f2x")
 optionButtonExec = NodePath("Panel/VBoxSeletor1/optionTempoExec")
 lineNome = NodePath("Panel/VBoxSeletor1/LineNome")
-lineTesteRes = NodePath("Panel/VBoxSeletor1/LineTesteRes")
+lineTesteRes = NodePath("")
 lineAlcance = NodePath("Panel/VBoxSeletor1/LineAlcance")
 lineDuracao = NodePath("Panel/VBoxSeletor2/HBoxDuracao/LineDuracao")
 textDescricao = NodePath("Panel/textDescricao")
@@ -198,11 +198,6 @@ popup/item_4/id = 4
 popup/item_5/text = "N/A"
 popup/item_5/icon = ExtResource("22_sumtn")
 popup/item_5/id = 5
-
-[node name="LineTesteRes" type="LineEdit" parent="Panel/VBoxSeletor1"]
-custom_minimum_size = Vector2(182, 38)
-layout_mode = 2
-placeholder_text = "Teste de Resistência"
 
 [node name="buttonCriarMagia" type="Button" parent="Panel/VBoxSeletor1"]
 layout_mode = 2
@@ -413,7 +408,6 @@ text = "Custo: "
 [connection signal="item_selected" from="Panel/VBoxSeletor1/optionTempoExec" to="." method="_on_option_tempo_exec_item_selected"]
 [connection signal="text_changed" from="Panel/VBoxSeletor1/LineAlcance" to="." method="_on_line_alcance_text_changed"]
 [connection signal="item_selected" from="Panel/VBoxSeletor1/optionFormato" to="." method="_on_option_formato_item_selected"]
-[connection signal="text_changed" from="Panel/VBoxSeletor1/LineTesteRes" to="." method="_on_line_teste_res_text_changed"]
 [connection signal="pressed" from="Panel/VBoxSeletor1/buttonCriarMagia" to="." method="_on_button_criar_magia_pressed"]
 [connection signal="text_changed" from="Panel/VBoxSeletor2/HBoxDuracao/LineDuracao" to="." method="_on_line_duracao_text_changed"]
 [connection signal="item_selected" from="Panel/VBoxSeletor2/HBoxComponentes/optionComponentes" to="." method="_on_option_componentes_item_selected"]

@@ -10,22 +10,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ur63k")
-labelNome = NodePath("Panel/VBoxLabelsDesc/labelNome")
-labelGrau = NodePath("Panel/VBoxLabelsDesc/labelGrau")
-labelArea1 = NodePath("Panel/VBoxLabelsDesc/labelArea1")
-labelArea2 = NodePath("Panel/VBoxLabelsDesc/labelArea2")
-labelTesteRes = NodePath("Panel/VBoxLabelsDesc/labelTesteRes")
-labelCD = NodePath("Panel/VBoxLabelsDesc/labelCD")
-labelTempoExec = NodePath("Panel/VBoxLabelsDesc/labelTempoExec")
-labelDuracao = NodePath("Panel/VBoxLabelsDesc/labelDuracao")
-labelComponentes = NodePath("Panel/VBoxLabelsDesc/labelComponentes")
-labelAOE = NodePath("Panel/VBoxLabelsDesc/labelAoE")
-labelAlcance = NodePath("Panel/VBoxLabelsDesc/labelAlcance")
-labelAtaque = NodePath("Panel/VBoxLabelsDesc/labelAtaque")
-labelCusto = NodePath("Panel/VBoxLabelsDesc/labelCusto")
-labelDescricao = NodePath("Panel/VBoxLabelsDesc/richTextLabelDescricao")
+labelNome = NodePath("mainPanel/VBoxLabelsDesc/labelNome")
+labelGrau = NodePath("mainPanel/VBoxLabelsDesc/labelGrau")
+labelArea1 = NodePath("mainPanel/VBoxLabelsDesc/labelArea1")
+labelArea2 = NodePath("mainPanel/VBoxLabelsDesc/labelArea2")
+labelTesteRes = NodePath("mainPanel/VBoxLabelsDesc/labelTesteRes")
+labelCD = NodePath("mainPanel/VBoxLabelsDesc/labelCD")
+labelTempoExec = NodePath("mainPanel/VBoxLabelsDesc/labelTempoExec")
+labelDuracao = NodePath("mainPanel/VBoxLabelsDesc/labelDuracao")
+labelComponentes = NodePath("mainPanel/VBoxLabelsDesc/labelComponentes")
+labelAOE = NodePath("mainPanel/VBoxLabelsDesc/labelAoE")
+labelAlcance = NodePath("mainPanel/VBoxLabelsDesc/labelAlcance")
+labelAtaque = NodePath("mainPanel/VBoxLabelsDesc/labelAtaque")
+labelCusto = NodePath("mainPanel/VBoxLabelsDesc/labelCusto")
+labelDescricao = NodePath("mainPanel/VBoxLabelsDesc/richTextLabelDescricao")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="mainPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,7 +33,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxLabelsDesc" type="VBoxContainer" parent="Panel"]
+[node name="VBoxLabelsDesc" type="VBoxContainer" parent="mainPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.00380558
@@ -45,71 +45,157 @@ offset_right = 0.407959
 offset_bottom = -0.0960083
 metadata/_edit_use_anchors_ = true
 
-[node name="labelNome" type="Label" parent="Panel/VBoxLabelsDesc"]
+[node name="labelNome" type="Label" parent="mainPanel/VBoxLabelsDesc"]
 layout_mode = 2
 text = "Nome:"
 
-[node name="labelGrau" type="Label" parent="Panel/VBoxLabelsDesc"]
+[node name="labelGrau" type="Label" parent="mainPanel/VBoxLabelsDesc"]
 layout_mode = 2
 text = "Grau: "
 
-[node name="labelArea1" type="Label" parent="Panel/VBoxLabelsDesc"]
+[node name="labelArea1" type="Label" parent="mainPanel/VBoxLabelsDesc"]
 layout_mode = 2
 text = "Área(s) Primária(s):"
 
-[node name="labelArea2" type="Label" parent="Panel/VBoxLabelsDesc"]
+[node name="labelArea2" type="Label" parent="mainPanel/VBoxLabelsDesc"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 text = "Área(s) Secundária(s):"
 autowrap_mode = 3
 
-[node name="labelTesteRes" type="Label" parent="Panel/VBoxLabelsDesc"]
+[node name="labelTesteRes" type="Label" parent="mainPanel/VBoxLabelsDesc"]
 layout_mode = 2
 text = "Teste de Resistência:"
 
-[node name="labelCD" type="Label" parent="Panel/VBoxLabelsDesc"]
+[node name="labelCD" type="Label" parent="mainPanel/VBoxLabelsDesc"]
 layout_mode = 2
 text = "Classe de Dificuldade:"
 
-[node name="labelTempoExec" type="Label" parent="Panel/VBoxLabelsDesc"]
+[node name="labelTempoExec" type="Label" parent="mainPanel/VBoxLabelsDesc"]
 layout_mode = 2
 text = "Tempo de Execução:"
 
-[node name="labelDuracao" type="Label" parent="Panel/VBoxLabelsDesc"]
+[node name="labelDuracao" type="Label" parent="mainPanel/VBoxLabelsDesc"]
 layout_mode = 2
 text = "Duração:"
 
-[node name="labelComponentes" type="Label" parent="Panel/VBoxLabelsDesc"]
+[node name="labelComponentes" type="Label" parent="mainPanel/VBoxLabelsDesc"]
 layout_mode = 2
 text = "Componentes:"
 
-[node name="labelAoE" type="Label" parent="Panel/VBoxLabelsDesc"]
+[node name="labelAoE" type="Label" parent="mainPanel/VBoxLabelsDesc"]
 layout_mode = 2
 text = "Área de Efeito:"
 
-[node name="labelAlcance" type="Label" parent="Panel/VBoxLabelsDesc"]
+[node name="labelAlcance" type="Label" parent="mainPanel/VBoxLabelsDesc"]
 layout_mode = 2
 text = "Alcance:"
 
-[node name="labelAtaque" type="Label" parent="Panel/VBoxLabelsDesc"]
+[node name="labelAtaque" type="Label" parent="mainPanel/VBoxLabelsDesc"]
 layout_mode = 2
 text = "Ataque:"
 
-[node name="labelCusto" type="Label" parent="Panel/VBoxLabelsDesc"]
+[node name="labelCusto" type="Label" parent="mainPanel/VBoxLabelsDesc"]
 layout_mode = 2
 text = "Custo: "
 
-[node name="richTextLabelDescricao" type="RichTextLabel" parent="Panel/VBoxLabelsDesc"]
+[node name="richTextLabelDescricao" type="RichTextLabel" parent="mainPanel/VBoxLabelsDesc"]
 custom_minimum_size = Vector2(400, 133)
 layout_mode = 2
 text = "Descrição:"
 
-[node name="buttonVoltar" type="Button" parent="Panel"]
-layout_mode = 0
-offset_left = 806.0
-offset_top = 300.0
-offset_right = 861.0
-offset_bottom = 331.0
+[node name="buttonVoltar" type="Button" parent="mainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.606
+anchor_top = 0.887
+anchor_right = 0.654
+anchor_bottom = 0.935
+offset_left = -0.112
+offset_top = 0.223999
+offset_right = -0.408081
+offset_bottom = 0.119934
 text = "Voltar"
+metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="Panel/buttonVoltar" to="." method="_on_button_voltar_pressed"]
+[node name="ButtonAddMod" type="Button" parent="mainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.766
+anchor_top = 0.883
+anchor_right = 0.933
+anchor_bottom = 0.931
+offset_left = 0.567993
+offset_top = -0.184021
+offset_right = 0.18396
+offset_bottom = -0.288025
+text = "Adicionar Característica"
+metadata/_edit_use_anchors_ = true
+
+[node name="panelCaracteristicas" type="Panel" parent="mainPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.586
+anchor_top = 0.068
+anchor_right = 0.948
+anchor_bottom = 0.856
+offset_left = -0.0720215
+offset_top = -0.064003
+offset_right = -0.0960693
+offset_bottom = 0.311951
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mainPanel/panelCaracteristicas"]
+layout_mode = 0
+offset_right = 260.0
+offset_bottom = 102.0
+
+[node name="optionControle" type="OptionButton" parent="mainPanel/panelCaracteristicas/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+tooltip_text = "Modificadores de controle"
+item_count = 14
+popup/item_0/text = "Adicionar Condição"
+popup/item_1/text = "Adicionar Empurrão"
+popup/item_1/id = 1
+popup/item_2/text = "Adicionar Vantagem/Desvantagem"
+popup/item_2/id = 2
+popup/item_3/text = "Aumentar Alcance"
+popup/item_3/id = 3
+popup/item_4/text = "Aumentar Área"
+popup/item_4/id = 4
+popup/item_5/text = "Controle Cirurgíco"
+popup/item_5/id = 5
+popup/item_6/text = "Duração Prolongada"
+popup/item_6/id = 6
+popup/item_7/text = "Feitiço Rápido"
+popup/item_7/id = 7
+popup/item_8/text = "Toque a Distância"
+popup/item_8/id = 8
+popup/item_9/text = "Multiplicar"
+popup/item_9/id = 9
+popup/item_10/text = "Aumento de CD"
+popup/item_10/id = 10
+popup/item_11/text = "Feitiço de uma mão só"
+popup/item_11/id = 11
+popup/item_12/text = "Alteração de Teste de Resistência"
+popup/item_12/id = 12
+popup/item_13/text = "Alcance de Toque"
+popup/item_13/id = 13
+
+[node name="optionSuporte" type="OptionButton" parent="mainPanel/panelCaracteristicas/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+tooltip_text = "Modificadores de suporte"
+
+[node name="optionOfensivo" type="OptionButton" parent="mainPanel/panelCaracteristicas/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+tooltip_text = "Modificadores ofensivos"
+
+[node name="optionReducao" type="OptionButton" parent="mainPanel/panelCaracteristicas/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+tooltip_text = "Modificadores de redução de custo"
+
+[connection signal="pressed" from="mainPanel/buttonVoltar" to="." method="_on_button_voltar_pressed"]
