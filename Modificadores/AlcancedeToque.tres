@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Modificador" load_steps=2 format=3 uid="uid://djpampxmcwekw"]
+
+[ext_resource type="Script" path="res://Scripts/Modificador.gd" id="1_iixoj"]
+
+[resource]
+script = ExtResource("1_iixoj")
+nome = null
+exigencia = null
+efeito = null
+custo = null

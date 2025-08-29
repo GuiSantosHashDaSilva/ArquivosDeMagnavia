@@ -17,6 +17,7 @@ var alcance: String;
 var ataque: int;
 var custo: int;
 var descricao: String;
+var modificadores: Array = [];
 const Icone: String = "res://Assests/Icones/icone_de_feitico_carvalho.png";
 
 func _init(
@@ -49,3 +50,6 @@ func _init(
 	self.alcance = _alcance;
 	self.areaEfeito = _areaEfeito;
 	self.descricao = _descricao;
+
+func adicionarModificador(modificador:Modificador) -> void:
+	modificadores.append(modificador);

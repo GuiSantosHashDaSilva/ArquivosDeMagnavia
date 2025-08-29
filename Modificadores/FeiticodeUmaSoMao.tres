@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Modificador" load_steps=2 format=3 uid="uid://dlepxtcif1d14"]
+
+[ext_resource type="Script" path="res://Scripts/Modificador.gd" id="1_fk5ou"]
+
+[resource]
+script = ExtResource("1_fk5ou")
+nome = ""
+exigencia = ""
+efeito = ""
+custo = 0

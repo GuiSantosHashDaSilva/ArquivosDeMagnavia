@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Modificador" load_steps=2 format=3 uid="uid://bl38uyguc222k"]
+
+[ext_resource type="Script" path="res://Scripts/Modificador.gd" id="1_pa2ws"]
+
+[resource]
+script = ExtResource("1_pa2ws")
+nome = ""
+exigencia = ""
+efeito = ""
+custo = 0

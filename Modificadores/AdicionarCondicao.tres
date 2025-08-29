@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Modificador" load_steps=2 format=3 uid="uid://rgsfrn2guy1f"]
+
+[ext_resource type="Script" path="res://Scripts/Modificador.gd" id="1_jh2xr"]
+
+[resource]
+script = ExtResource("1_jh2xr")
+nome = "Adicionar Condição"
+exigencia = "Nenhuma"
+efeito = "Concede ao feitiço a capacidade de impor uma ou mais condições à uma criatura. Caso a condição escolhida não possua uma duração própria, ela dura até o início do seu próximo turno ou até o final do próximo turno de uma outra criatura afetada, caso não defina uma duração por meio da característica \"DURAÇÃO PROLONGADA\".Uma condição deve sempre exigir um Teste de Resistência para que a criatura possa não sofrer seus efeitos.O limite de condições é igual ao grau da magia."
+custo = null

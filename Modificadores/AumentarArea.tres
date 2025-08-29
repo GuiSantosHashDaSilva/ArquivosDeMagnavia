@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Modificador" load_steps=2 format=3 uid="uid://condni7u514lp"]
+
+[ext_resource type="Script" path="res://Scripts/Modificador.gd" id="1_rkll7"]
+
+[resource]
+script = ExtResource("1_rkll7")
+nome = ""
+exigencia = ""
+efeito = ""
+custo = 0
