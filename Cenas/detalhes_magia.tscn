@@ -36,9 +36,9 @@ grow_vertical = 2
 [node name="VBoxLabelsDesc" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.193042
+anchor_left = 0.00380558
 anchor_top = 0.100309
-anchor_right = 0.747042
+anchor_right = 0.557806
 anchor_bottom = 0.879778
 offset_left = -0.384033
 offset_right = 0.407959

@@ -340,6 +340,7 @@ text = "Componentes:"
 custom_minimum_size = Vector2(182, 38)
 layout_mode = 2
 size_flags_horizontal = 10
+allow_reselect = true
 item_count = 2
 popup/item_0/text = "Vocal"
 popup/item_0/icon = ExtResource("23_xhrm1")

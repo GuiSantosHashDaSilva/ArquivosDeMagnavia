@@ -170,7 +170,10 @@ func _on_option_componentes_item_selected(index:int) -> void:
 		_:
 			print("Índice inválido");
 			return
-	listaComponentes.append(componente);
+	if not listaComponentes.has(componente):
+		listaComponentes.append(componente);
+	else:
+		listaComponentes.erase(componente);
 	labelComponentes.text = "Componentes: " + ", ".join(listaComponentes);
 
 func _on_option_formato_item_selected(index:int) -> void:
