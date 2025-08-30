@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CondicaoEmpurrao" load_steps=2 format=3 uid="uid://bicxmpivomi4u"]
+
+[ext_resource type="Script" path="res://Scripts/Condicoes/condicao_empurrao.gd" id="1_ixb14"]
+
+[resource]
+script = ExtResource("1_ixb14")
+pm = 0

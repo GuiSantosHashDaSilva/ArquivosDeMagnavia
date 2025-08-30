@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="Modificador" load_steps=2 format=3 uid="uid://b5qk65u1oi381"]
+[gd_resource type="Resource" script_class="Modificador" load_steps=4 format=3 uid="uid://b5qk65u1oi381"]
 
 [ext_resource type="Script" path="res://Scripts/Modificador.gd" id="1_k6sww"]
+[ext_resource type="Script" path="res://Scripts/Condicoes/condicao_empurrao.gd" id="1_llnkr"]
+
+[sub_resource type="Resource" id="Resource_rekrg"]
+script = ExtResource("1_llnkr")
+pm = 0
 
 [resource]
 script = ExtResource("1_k6sww")
-nome = ""
-exigencia = ""
-efeito = ""
+nome = "Adicionar Empurrão"
+exigencia = "Nenhuma."
+efeito = "Concede ao feitiço a capacidade de empurrar uma criatura. Para ser empurrada, a criatura deve falhar em um Teste de Fortitude.Para cada 3 metros que uma criatura é empurrada, caso ela bata em um objeto ou estrutura com mais de 1,5 metro de raio, ela receberá 1d8 de dano Contundente extra por metro do objeto ou estrutura, até o máximo de 8d8. Esse dano é aplicado apenas uma vez e não é necessário que a criatura empurrada percorra todo o alcance do empurrão para receber o dano máximo possível de cada empurrão."
 custo = 0
+condicaocusto = SubResource("Resource_rekrg")
