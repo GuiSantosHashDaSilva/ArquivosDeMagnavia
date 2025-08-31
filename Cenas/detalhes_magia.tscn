@@ -199,3 +199,4 @@ layout_mode = 2
 tooltip_text = "Modificadores de redução de custo"
 
 [connection signal="pressed" from="mainPanel/buttonVoltar" to="." method="_on_button_voltar_pressed"]
+[connection signal="item_selected" from="mainPanel/panelCaracteristicas/VBoxContainer/optionControle" to="." method="_on_option_controle_item_selected"]

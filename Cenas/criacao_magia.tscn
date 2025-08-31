@@ -28,7 +28,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_073b3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="CriacaoMagia" type="Control" node_paths=PackedStringArray("optionButtonExec", "lineNome", "lineTesteRes", "lineAlcance", "lineDuracao", "textDescricao", "labelNome", "labelGrau", "labelArea1", "labelArea2", "labelTesteRes", "labelTempoExec", "labelDuracao", "labelComponentes", "labelAtaque", "labelCusto", "labelCD", "labelAlcance", "labelAOE", "hSliderGrau")]
+[node name="CriacaoMagia" type="Control" node_paths=PackedStringArray("optionButtonExec", "lineNome", "lineAlcance", "lineDuracao", "textDescricao", "labelNome", "labelGrau", "labelArea1", "labelArea2", "labelTesteRes", "labelTempoExec", "labelDuracao", "labelComponentes", "labelAtaque", "labelCusto", "labelCD", "labelAlcance", "labelAOE", "hSliderGrau")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,7 +38,6 @@ grow_vertical = 2
 script = ExtResource("1_o0f2x")
 optionButtonExec = NodePath("Panel/VBoxSeletor1/optionTempoExec")
 lineNome = NodePath("Panel/VBoxSeletor1/LineNome")
-lineTesteRes = NodePath("")
 lineAlcance = NodePath("Panel/VBoxSeletor1/LineAlcance")
 lineDuracao = NodePath("Panel/VBoxSeletor2/HBoxDuracao/LineDuracao")
 textDescricao = NodePath("Panel/textDescricao")
