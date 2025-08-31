@@ -57,6 +57,15 @@ func _process(delta:float) -> void:
 func _on_button_voltar_pressed() -> void:
 	get_tree().change_scene_to_file("res://Cenas/MainMenu.tscn");
 
+func _on_button_modificador_add_0_botao_status() -> void:
+	nomeMod = "Adicionar Condição";
+	efeitoMod = "Concede ao feitiço a capacidade de impor uma ou mais condições à uma criatura. Caso a condição escolhida não possua uma duração própria, ela dura até o início do seu próximo turno ou até o final do próximo turno de uma outra criatura afetada, caso não defina uma duração por meio da característica “DURAÇÃO PROLONGADA”.
+Uma condição deve sempre exigir um Teste de Resistência para que a criatura possa não sofrer seus efeitos.";
+	exigenciaMod = "Nenhuma."
+	labelModificador.text = "Modificador: " + nomeMod;
+	labelExigencia.text = "Exigência: " + exigenciaMod;
+	labelCustoMod.text = "Custo: " + str(custoMod);
+	pass # Replace with function body.
 
 func _on_option_controle_item_selected(index:int) -> void:
 	match index:
@@ -139,6 +148,11 @@ Deve ser escolhido apenas um dos tipos (vantagem +2 ou desvantagem -3), que dura
 	pass # Replace with function body.
 
 
-func _on_menu_button_pressed() -> void:
-	print("pau")
+func _on_button_modificador_add_0_status_selecionado(index:int) -> void:
+	print("index status: " + str(index));
+	pass # Replace with function body.
+
+
+func _on_button_modificador_add_0_valor_empurrao(value:float) -> void:
+	print("valor empurrão: " + str(value));
 	pass # Replace with function body.

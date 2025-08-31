@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://0psvsydpvmql"]
+[gd_scene load_steps=3 format=3 uid="uid://0psvsydpvmql"]
 
 [ext_resource type="Script" path="res://Scripts/detalhes_magia.gd" id="1_ur63k"]
+[ext_resource type="PackedScene" uid="uid://btrvnua8ljb3n" path="res://Cenas/button_modificador_add_0.tscn" id="2_0c3mr"]
 
 [node name="DetalhesMagia" type="Control" node_paths=PackedStringArray("labelNome", "labelGrau", "labelArea1", "labelArea2", "labelTesteRes", "labelCD", "labelTempoExec", "labelDuracao", "labelComponentes", "labelAOE", "labelAlcance", "labelAtaque", "labelCusto", "labelModificador", "labelExigencia", "labelCustoMod", "labelModificadores", "labelDescricao")]
 layout_mode = 3
@@ -238,5 +239,15 @@ layout_mode = 2
 text = "Exigência:"
 autowrap_mode = 2
 
+[node name="ButtonModificadorAdd0" parent="mainPanel" instance=ExtResource("2_0c3mr")]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 113.0
+offset_right = 534.0
+offset_bottom = 144.0
+
 [connection signal="pressed" from="mainPanel/buttonVoltar" to="." method="_on_button_voltar_pressed"]
 [connection signal="item_selected" from="mainPanel/panelCaracteristicas/VBoxContainer/optionControle" to="." method="_on_option_controle_item_selected"]
+[connection signal="botao_status" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_status"]
+[connection signal="status_selecionado" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_status_selecionado"]
+[connection signal="valor_empurrao" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_valor_empurrao"]

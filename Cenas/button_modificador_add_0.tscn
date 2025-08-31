@@ -1,20 +1,25 @@
 [gd_scene load_steps=3 format=3 uid="uid://btrvnua8ljb3n"]
 
-[ext_resource type="Script" path="res://button_modificador_add_0.gd" id="1_7o1s0"]
-[ext_resource type="Script" path="res://menu_button.gd" id="2_cln6w"]
+[ext_resource type="Script" path="res://Scripts/button_modificador_add_0.gd" id="1_7o1s0"]
+[ext_resource type="Script" path="res://Scripts/menu_button_add_status.gd" id="2_cln6w"]
 
-[node name="ButtonModificadorAdd0" type="Button"]
+[node name="ButtonModificadorAdd0" type="Button" node_paths=PackedStringArray("vSliderEmpurrao", "panelVBoxBack", "vBoxPopUp")]
 custom_minimum_size = Vector2(301, 31)
 offset_left = 401.0
 offset_top = 278.0
 offset_right = 682.0
 offset_bottom = 309.0
+toggle_mode = true
 text = "Controle"
 script = ExtResource("1_7o1s0")
+vSliderEmpurrao = NodePath("vSliderEmpurrao")
+panelVBoxBack = NodePath("Panel")
+vBoxPopUp = NodePath("VBoxContainer")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(301, 0)
 layout_mode = 0
+offset_top = 32.0
 offset_right = 301.0
 offset_bottom = 366.0
 
@@ -24,7 +29,26 @@ offset_top = 31.0
 offset_right = 301.0
 offset_bottom = 293.0
 
-[node name="MenuButton" type="MenuButton" parent="VBoxContainer"]
+[node name="menuButtonAddStatus" type="MenuButton" parent="VBoxContainer"]
 layout_mode = 2
 text = "Adicionar Condição"
 script = ExtResource("2_cln6w")
+
+[node name="buttonAddEmpurrao" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Adicionar Empurrão"
+
+[node name="vSliderEmpurrao" type="VSlider" parent="."]
+layout_mode = 0
+offset_left = 308.0
+offset_top = 25.0
+offset_right = 324.0
+offset_bottom = 221.0
+step = 3.0
+allow_greater = true
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]
+[connection signal="pressed" from="VBoxContainer/menuButtonAddStatus" to="." method="_on_menu_button_add_status_pressed"]
+[connection signal="status_selecionado" from="VBoxContainer/menuButtonAddStatus" to="." method="_on_menu_button_add_status_status_selecionado"]
+[connection signal="pressed" from="VBoxContainer/buttonAddEmpurrao" to="." method="_on_button_add_empurrao_pressed"]
+[connection signal="value_changed" from="vSliderEmpurrao" to="." method="_on_v_slider_empurrao_value_changed"]
