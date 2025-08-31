@@ -19,6 +19,7 @@ extends Control
 @export var labelCustoMod: Label;
 @export var labelModificadores: Label;
 @export var labelDescricao: RichTextLabel;
+@export var labelEfeito: RichTextLabel;
 #endregion
 
 var nomeMod:String;
@@ -59,12 +60,48 @@ func _on_button_voltar_pressed() -> void:
 
 func _on_button_modificador_add_0_botao_status() -> void:
 	nomeMod = "Adicionar Condição";
-	efeitoMod = "Concede ao feitiço a capacidade de impor uma ou mais condições à uma criatura. Caso a condição escolhida não possua uma duração própria, ela dura até o início do seu próximo turno ou até o final do próximo turno de uma outra criatura afetada, caso não defina uma duração por meio da característica “DURAÇÃO PROLONGADA”.
-Uma condição deve sempre exigir um Teste de Resistência para que a criatura possa não sofrer seus efeitos.";
+	efeitoMod = "Concede ao feitiço a capacidade de impor uma ou mais condições à uma criatura. Caso a condição escolhida não possua uma duração própria, ela dura até o início do seu próximo turno ou até o final do próximo turno de uma outra criatura afetada, caso não defina uma duração por meio da característica “DURAÇÃO PROLONGADA”. Uma condição deve sempre exigir um Teste de Resistência para que a criatura possa não sofrer seus efeitos.";
 	exigenciaMod = "Nenhuma."
 	labelModificador.text = "Modificador: " + nomeMod;
 	labelExigencia.text = "Exigência: " + exigenciaMod;
+	labelEfeito.text = "Efeito: " + efeitoMod;
 	labelCustoMod.text = "Custo: " + str(custoMod);
+	pass # Replace with function body.
+	
+func _on_button_modificador_add_0_status_selecionado(index:int) -> void:
+	match index:
+		0:  custoMod = 1;
+		1: custoMod = 1;
+		2: custoMod = 2;
+		3: custoMod = 3;
+		4: custoMod = 4;
+		5: custoMod = 1;
+		6: custoMod = 1;
+		7: custoMod = 2;
+		8: custoMod = 5;
+		9: custoMod = 2;
+		10: custoMod = 4;
+		11: custoMod = 2;
+		12: custoMod = 2;
+		13: custoMod = 1;
+		14: custoMod = 2;
+		15: custoMod = 2;
+		16: custoMod = 2;
+		17: custoMod = 8;
+		18: custoMod = 5;
+		19: custoMod = 2;
+		20: custoMod = 2;
+		21: custoMod = 6;
+		22: custoMod = 2;
+		23: custoMod = 8;
+		24: custoMod = 1;
+		25: custoMod = 1;
+		26: custoMod = 3;
+		27: custoMod = 2;
+		28: custoMod = 1;
+		29: custoMod = 3;
+	labelCustoMod.text = "Custo: " + str(custoMod);
+	print("index status: " + str(index));
 	pass # Replace with function body.
 
 func _on_option_controle_item_selected(index:int) -> void:
@@ -148,9 +185,6 @@ Deve ser escolhido apenas um dos tipos (vantagem +2 ou desvantagem -3), que dura
 	pass # Replace with function body.
 
 
-func _on_button_modificador_add_0_status_selecionado(index:int) -> void:
-	print("index status: " + str(index));
-	pass # Replace with function body.
 
 
 func _on_button_modificador_add_0_valor_empurrao(value:float) -> void:

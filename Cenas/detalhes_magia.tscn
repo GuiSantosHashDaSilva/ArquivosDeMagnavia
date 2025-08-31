@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/detalhes_magia.gd" id="1_ur63k"]
 [ext_resource type="PackedScene" uid="uid://btrvnua8ljb3n" path="res://Cenas/button_modificador_add_0.tscn" id="2_0c3mr"]
 
-[node name="DetalhesMagia" type="Control" node_paths=PackedStringArray("labelNome", "labelGrau", "labelArea1", "labelArea2", "labelTesteRes", "labelCD", "labelTempoExec", "labelDuracao", "labelComponentes", "labelAOE", "labelAlcance", "labelAtaque", "labelCusto", "labelModificador", "labelExigencia", "labelCustoMod", "labelModificadores", "labelDescricao")]
+[node name="DetalhesMagia" type="Control" node_paths=PackedStringArray("labelNome", "labelGrau", "labelArea1", "labelArea2", "labelTesteRes", "labelCD", "labelTempoExec", "labelDuracao", "labelComponentes", "labelAOE", "labelAlcance", "labelAtaque", "labelCusto", "labelModificador", "labelExigencia", "labelCustoMod", "labelModificadores", "labelDescricao", "labelEfeito")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,6 +29,7 @@ labelExigencia = NodePath("mainPanel/panelCaracteristicas/VBoxContainer2/labelEx
 labelCustoMod = NodePath("mainPanel/panelCaracteristicas/VBoxContainer2/HBoxContainer/labelCustoMod")
 labelModificadores = NodePath("mainPanel/VBoxLabelsDesc/labelModificadores")
 labelDescricao = NodePath("mainPanel/VBoxLabelsDesc/richTextLabelDescricao")
+labelEfeito = NodePath("mainPanel/panelCaracteristicas/VBoxContainer2/richTextLabelEfeito")
 
 [node name="mainPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -238,6 +239,11 @@ custom_minimum_size = Vector2(550, 25)
 layout_mode = 2
 text = "Exigência:"
 autowrap_mode = 2
+
+[node name="richTextLabelEfeito" type="RichTextLabel" parent="mainPanel/panelCaracteristicas/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+text = "Efeito:"
 
 [node name="ButtonModificadorAdd0" parent="mainPanel" instance=ExtResource("2_0c3mr")]
 layout_mode = 0
