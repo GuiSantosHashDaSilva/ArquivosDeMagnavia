@@ -14,8 +14,18 @@ extends Control
 @export var labelAlcance: Label;
 @export var labelAtaque: Label;
 @export var labelCusto: Label;
+@export var labelModificador: Label;
+@export var labelExigencia: Label;
+@export var labelCustoMod: Label;
+@export var labelModificadores: Label;
 @export var labelDescricao: RichTextLabel;
 #endregion
+
+var nomeMod:String;
+var efeitoMod:String;
+var exigenciaMod:String;
+var custoMod:int;
+var dobroGrau: int;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,7 +42,10 @@ func _ready() -> void:
 	labelAlcance.text = "Alcance: " + GerenciadorPersonagens.feiticoSelecionado.alcance;
 	labelAtaque.text = "Ataque: " + str(GerenciadorPersonagens.feiticoSelecionado.ataque);
 	labelCusto.text = "Custo: " + str(GerenciadorPersonagens.feiticoSelecionado.custo);
+	labelModificadores.text = "Modificadores: " + ", ".join(GerenciadorPersonagens.feiticoSelecionado.modificadores)
 	labelDescricao.text = "Descrição: " + GerenciadorPersonagens.feiticoSelecionado.descricao;
+	
+	dobroGrau = GerenciadorPersonagens.feiticoSelecionado.grau * 2
 	pass # Replace with function body.
 
 
@@ -45,12 +58,8 @@ func _on_button_voltar_pressed() -> void:
 	get_tree().change_scene_to_file("res://Cenas/MainMenu.tscn");
 
 
-func _on_option_controle_item_selected_mod_controle(index:int) -> void:
-	var nomeMod:String;
-	var efeitoMod:String;
-	var exigenciaMod:String;
-	var custoMod:int;
-	match index:# aspas legais “”
+func _on_option_controle_item_selected(index:int) -> void:
+	match index:
 		0: 
 			nomeMod = "Adicionar Status";
 			efeitoMod = "Concede ao feitiço a capacidade de impor uma ou mais condições à uma criatura. Caso a condição escolhida não possua uma duração própria, ela dura até o início do seu próximo turno ou até o final do próximo turno de uma outra criatura afetada, caso não defina uma duração por meio da característica “DURAÇÃO PROLONGADA”.
@@ -113,7 +122,7 @@ Deve ser escolhido apenas um dos tipos (vantagem +2 ou desvantagem -3), que dura
 			nomeMod = "Feitiço de Uma Só Mão";
 			efeitoMod = "Concede ao feitiço a necessidade de se usar apenas uma mão para se realizar o feitiço, podendo usar a outra mão livre para atacar se quiser.";
 			exigenciaMod = "Nenhuma.";
-			custoMod = 0; #igual ao dobro do grau do feitiço
+			custoMod = dobroGrau; 
 		12: 
 			nomeMod = "Alteração de Teste de Resistência";
 			efeitoMod = "Troca o teste de resistência do feitiço.";
@@ -124,4 +133,12 @@ Deve ser escolhido apenas um dos tipos (vantagem +2 ou desvantagem -3), que dura
 			efeitoMod = "Faz com que o alcance do feitiço seja definido para toque, necessitando que toque no alvo com seu corpo ou armas corpo a corpo, além disso faz com que caso use o feitiço para se atacar, as armas utilizadas ou não, se beneficia dos bônus de dano delas quando forem aplicados no dano do feitiço";
 			exigenciaMod = "Nenhuma";
 			custoMod = 1;
+	labelModificador.text = "Modificador: " + nomeMod;
+	labelExigencia.text = "Exigência: " + exigenciaMod;
+	labelCustoMod.text = "Custo: " + str(custoMod);
+	pass # Replace with function body.
+
+
+func _on_menu_button_pressed() -> void:
+	print("pau")
 	pass # Replace with function body.

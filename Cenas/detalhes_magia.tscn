@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/detalhes_magia.gd" id="1_ur63k"]
 
-[node name="DetalhesMagia" type="Control" node_paths=PackedStringArray("labelNome", "labelGrau", "labelArea1", "labelArea2", "labelTesteRes", "labelCD", "labelTempoExec", "labelDuracao", "labelComponentes", "labelAOE", "labelAlcance", "labelAtaque", "labelCusto", "labelDescricao")]
+[node name="DetalhesMagia" type="Control" node_paths=PackedStringArray("labelNome", "labelGrau", "labelArea1", "labelArea2", "labelTesteRes", "labelCD", "labelTempoExec", "labelDuracao", "labelComponentes", "labelAOE", "labelAlcance", "labelAtaque", "labelCusto", "labelModificador", "labelExigencia", "labelCustoMod", "labelModificadores", "labelDescricao")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +23,10 @@ labelAOE = NodePath("mainPanel/VBoxLabelsDesc/labelAoE")
 labelAlcance = NodePath("mainPanel/VBoxLabelsDesc/labelAlcance")
 labelAtaque = NodePath("mainPanel/VBoxLabelsDesc/labelAtaque")
 labelCusto = NodePath("mainPanel/VBoxLabelsDesc/labelCusto")
+labelModificador = NodePath("mainPanel/panelCaracteristicas/VBoxContainer2/HBoxContainer/labelModificador")
+labelExigencia = NodePath("mainPanel/panelCaracteristicas/VBoxContainer2/labelExigência")
+labelCustoMod = NodePath("mainPanel/panelCaracteristicas/VBoxContainer2/HBoxContainer/labelCustoMod")
+labelModificadores = NodePath("mainPanel/VBoxLabelsDesc/labelModificadores")
 labelDescricao = NodePath("mainPanel/VBoxLabelsDesc/richTextLabelDescricao")
 
 [node name="mainPanel" type="Panel" parent="."]
@@ -38,7 +42,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.00380558
 anchor_top = 0.100309
-anchor_right = 0.557806
+anchor_right = 0.460583
 anchor_bottom = 0.879778
 offset_left = -0.384033
 offset_right = 0.407959
@@ -99,6 +103,10 @@ text = "Ataque:"
 layout_mode = 2
 text = "Custo: "
 
+[node name="labelModificadores" type="Label" parent="mainPanel/VBoxLabelsDesc"]
+layout_mode = 2
+text = "Modificadores: "
+
 [node name="richTextLabelDescricao" type="RichTextLabel" parent="mainPanel/VBoxLabelsDesc"]
 custom_minimum_size = Vector2(400, 133)
 layout_mode = 2
@@ -135,10 +143,10 @@ metadata/_edit_use_anchors_ = true
 [node name="panelCaracteristicas" type="Panel" parent="mainPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.586
-anchor_top = 0.068
-anchor_right = 0.948
-anchor_bottom = 0.856
+anchor_left = 0.488778
+anchor_top = 0.10658
+anchor_right = 0.967965
+anchor_bottom = 0.849827
 offset_left = -0.0720215
 offset_top = -0.064003
 offset_right = -0.0960693
@@ -146,14 +154,19 @@ offset_bottom = 0.311951
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="mainPanel/panelCaracteristicas"]
-layout_mode = 0
-offset_right = 260.0
-offset_bottom = 102.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.545607
+anchor_bottom = 0.439969
+offset_right = -0.175018
+offset_bottom = -0.0649872
+metadata/_edit_use_anchors_ = true
 
 [node name="optionControle" type="OptionButton" parent="mainPanel/panelCaracteristicas/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 tooltip_text = "Modificadores de controle"
+allow_reselect = true
 item_count = 14
 popup/item_0/text = "Adicionar Status"
 popup/item_1/text = "Adicionar Empurrão"
@@ -198,5 +211,48 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 tooltip_text = "Modificadores de redução de custo"
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="mainPanel/panelCaracteristicas"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 241.0
+offset_right = 551.0
+offset_bottom = 479.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="mainPanel/panelCaracteristicas/VBoxContainer2"]
+layout_mode = 2
+
+[node name="labelModificador" type="Label" parent="mainPanel/panelCaracteristicas/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(400, 25)
+layout_mode = 2
+text = "Modificador:"
+
+[node name="labelCustoMod" type="Label" parent="mainPanel/panelCaracteristicas/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Custo:"
+
+[node name="labelExigência" type="Label" parent="mainPanel/panelCaracteristicas/VBoxContainer2"]
+custom_minimum_size = Vector2(550, 25)
+layout_mode = 2
+text = "Exigência:"
+autowrap_mode = 2
+
+[node name="MenuButton" type="MenuButton" parent="mainPanel"]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 145.0
+offset_right = 396.0
+offset_bottom = 176.0
+text = "Controle"
+item_count = 3
+popup/item_0/text = "teste1"
+popup/item_0/checkable = 1
+popup/item_1/text = "teste2"
+popup/item_1/id = 1
+popup/item_2/text = "teste3"
+popup/item_2/id = 2
+
 [connection signal="pressed" from="mainPanel/buttonVoltar" to="." method="_on_button_voltar_pressed"]
 [connection signal="item_selected" from="mainPanel/panelCaracteristicas/VBoxContainer/optionControle" to="." method="_on_option_controle_item_selected"]
+[connection signal="pressed" from="mainPanel/MenuButton" to="." method="_on_menu_button_pressed"]
