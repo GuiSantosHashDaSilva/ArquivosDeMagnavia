@@ -238,21 +238,5 @@ layout_mode = 2
 text = "Exigência:"
 autowrap_mode = 2
 
-[node name="MenuButton" type="MenuButton" parent="mainPanel"]
-layout_mode = 0
-offset_left = 321.0
-offset_top = 145.0
-offset_right = 396.0
-offset_bottom = 176.0
-text = "Controle"
-item_count = 3
-popup/item_0/text = "teste1"
-popup/item_0/checkable = 1
-popup/item_1/text = "teste2"
-popup/item_1/id = 1
-popup/item_2/text = "teste3"
-popup/item_2/id = 2
-
 [connection signal="pressed" from="mainPanel/buttonVoltar" to="." method="_on_button_voltar_pressed"]
 [connection signal="item_selected" from="mainPanel/panelCaracteristicas/VBoxContainer/optionControle" to="." method="_on_option_controle_item_selected"]
-[connection signal="pressed" from="mainPanel/MenuButton" to="." method="_on_menu_button_pressed"]

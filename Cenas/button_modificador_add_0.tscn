@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://btrvnua8ljb3n"]
+
+[ext_resource type="Script" path="res://button_modificador_add_0.gd" id="1_7o1s0"]
+[ext_resource type="Script" path="res://menu_button.gd" id="2_cln6w"]
+
+[node name="ButtonModificadorAdd0" type="Button"]
+custom_minimum_size = Vector2(301, 31)
+offset_left = 401.0
+offset_top = 278.0
+offset_right = 682.0
+offset_bottom = 309.0
+text = "Controle"
+script = ExtResource("1_7o1s0")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(301, 0)
+layout_mode = 0
+offset_right = 301.0
+offset_bottom = 366.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 31.0
+offset_right = 301.0
+offset_bottom = 293.0
+
+[node name="MenuButton" type="MenuButton" parent="VBoxContainer"]
+layout_mode = 2
+text = "Adicionar Condição"
+script = ExtResource("2_cln6w")
