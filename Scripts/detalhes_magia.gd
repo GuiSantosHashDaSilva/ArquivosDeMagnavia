@@ -27,6 +27,9 @@ var efeitoMod:String;
 var exigenciaMod:String;
 var custoMod:int;
 var dobroGrau: int;
+var alcanceDobrado: int;
+var alcancePos60: int;
+var valorSliderAlcanceOld: float;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -47,7 +50,6 @@ func _ready() -> void:
 	labelDescricao.text = "Descrição: " + GerenciadorPersonagens.feiticoSelecionado.descricao;
 	
 	dobroGrau = GerenciadorPersonagens.feiticoSelecionado.grau * 2
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -56,18 +58,22 @@ func _process(delta:float) -> void:
 
 
 func _on_button_voltar_pressed() -> void:
-	get_tree().change_scene_to_file("res://Cenas/MainMenu.tscn");
+	get_tree().change_scene_to_file("res://Cenas/MainMenu.tscn");	
 
-func _on_button_modificador_add_0_botao_status() -> void:
-	nomeMod = "Adicionar Condição";
-	efeitoMod = "Concede ao feitiço a capacidade de impor uma ou mais condições à uma criatura. Caso a condição escolhida não possua uma duração própria, ela dura até o início do seu próximo turno ou até o final do próximo turno de uma outra criatura afetada, caso não defina uma duração por meio da característica “DURAÇÃO PROLONGADA”. Uma condição deve sempre exigir um Teste de Resistência para que a criatura possa não sofrer seus efeitos.";
-	exigenciaMod = "Nenhuma."
+func _atualizar_label_mod() -> void:
 	labelModificador.text = "Modificador: " + nomeMod;
 	labelExigencia.text = "Exigência: " + exigenciaMod;
 	labelEfeito.text = "Efeito: " + efeitoMod;
 	labelCustoMod.text = "Custo: " + str(custoMod);
-	pass # Replace with function body.
-	
+
+#region mod add_status
+func _on_button_modificador_add_0_botao_status() -> void:
+	nomeMod = "Adicionar Condição";
+	exigenciaMod = "Nenhuma."
+	efeitoMod = "Concede ao feitiço a capacidade de impor uma ou mais condições à uma criatura. Caso a condição escolhida não possua uma duração própria, ela dura até o início do seu próximo turno ou até o final do próximo turno de uma outra criatura afetada, caso não defina uma duração por meio da característica “DURAÇÃO PROLONGADA”. Uma condição deve sempre exigir um Teste de Resistência para que a criatura possa não sofrer seus efeitos.";
+	custoMod = 0;
+	_atualizar_label_mod();
+
 func _on_button_modificador_add_0_status_selecionado(index:int) -> void:
 	match index:
 		0:  custoMod = 1;
@@ -101,29 +107,60 @@ func _on_button_modificador_add_0_status_selecionado(index:int) -> void:
 		28: custoMod = 1;
 		29: custoMod = 3;
 	labelCustoMod.text = "Custo: " + str(custoMod);
-	print("index status: " + str(index));
-	pass # Replace with function body.
+#endregion
+
+#region mod add_empurrão
+func _on_button_modificador_add_0_botao_empurrao() -> void:
+	nomeMod = "Adicionar Empurrão";
+	exigenciaMod = "Nenhuma.";
+	efeitoMod = "Concede ao feitiço a capacidade de empurrar uma criatura. Para ser empurrada, a criatura deve falhar em um Teste de Fortitude. Para cada 3 metros que uma criatura é empurrada, caso ela bata em um objeto ou estrutura com mais de 1,5 metro de raio, ela receberá 1d8 de dano Contundente extra por metro do objeto ou estrutura, até o máximo de 8d8. Esse dano é aplicado apenas uma vez e não é necessário que a criatura empurrada percorra todo o alcance do empurrão para receber o dano máximo possível de cada empurrão.";
+	custoMod = 0;
+	_atualizar_label_mod();
+
+func _on_button_modificador_add_0_valor_empurrao(value:float) -> void:
+	custoMod = value/3;
+	labelCustoMod.text = "Custo: " + str(custoMod);
+#endregion
+
+func _on_button_modificador_add_0_botao_add_vantagem_desv() -> void:
+	nomeMod = "Adicionar Vantagem/Desvantagem";
+	efeitoMod = "Concede ao feitiço a capacidade de atribuir para uma criatura vantagem ou desvantagem em um dos próximos tipos de jogadas: jogada de ataque, Testes de Habilidade ou Testes de Resistência. Deve ser escolhido apenas um dos tipos (vantagem +2 ou desvantagem -3), que dura até o início do seu próximo turno ou até o final do próximo turno de uma outra criatura afetada, caso não aumente.";
+	exigenciaMod = "Nenhuma";
+	custoMod = 4;
+	_atualizar_label_mod();
+
+func _on_button_modificador_add_0_botao_alcance_up() -> void:
+	nomeMod = "Aumentar Alcance";
+	efeitoMod = "Concede ao feitiço a capacidade de aumentar o seu alcance de “Toque” para “Linha”.";
+	exigenciaMod = "Nenhuma";
+	custoMod = 0;
+	_atualizar_label_mod();
+
+
+func _on_button_modificador_add_0_valor_alcance(value:float) -> void:
+	if int(GerenciadorPersonagens.feiticoSelecionado.alcance) + value <= 60:
+		custoMod = value/6;
+		labelCustoMod.text = "Custo: " + str(custoMod);
+		alcancePos60 = int(GerenciadorPersonagens.feiticoSelecionado.alcance) + value;
+		valorSliderAlcanceOld = value;
+		print("Alcance até 60: " + str(value));
+	elif valorSliderAlcanceOld < value:
+		alcanceDobrado = alcancePos60 * 2;
+		custoMod += 4;
+		alcancePos60 = alcanceDobrado;
+		labelCustoMod.text = "Custo: " + str(custoMod);
+		valorSliderAlcanceOld = value;
+		print("Alcance pós 60: " + str(alcancePos60));
+	else:
+		alcanceDobrado = alcancePos60 / 2;
+		custoMod -= 4;
+		alcancePos60 = alcanceDobrado;
+		labelCustoMod.text = "Custo: " + str(custoMod);
+		valorSliderAlcanceOld = value;
+		print("Alcance pós 60: " + str(alcancePos60));
 
 func _on_option_controle_item_selected(index:int) -> void:
 	match index:
-		0: 
-			nomeMod = "Adicionar Status";
-			efeitoMod = "Concede ao feitiço a capacidade de impor uma ou mais condições à uma criatura. Caso a condição escolhida não possua uma duração própria, ela dura até o início do seu próximo turno ou até o final do próximo turno de uma outra criatura afetada, caso não defina uma duração por meio da característica “DURAÇÃO PROLONGADA”.
-Uma condição deve sempre exigir um Teste de Resistência para que a criatura possa não sofrer seus efeitos.";
-			exigenciaMod = "Nenhuma."
-			custoMod = 0; #o mesmo valor de pm do status
-		1: 
-			nomeMod = "Adicionar Empurrão";
-			efeitoMod = "Concede ao feitiço a capacidade de empurrar uma criatura. Para ser empurrada, a criatura deve falhar em um Teste de Fortitude.
-Para cada 3 metros que uma criatura é empurrada, caso ela bata em um objeto ou estrutura com mais de 1,5 metro de raio, ela receberá 1d8 de dano Contundente extra por metro do objeto ou estrutura, até o máximo de 8d8. Esse dano é aplicado apenas uma vez e não é necessário que a criatura empurrada percorra todo o alcance do empurrão para receber o dano máximo possível de cada empurrão.";
-			exigenciaMod = "Nenhuma.";
-			custoMod = 0; #1pm para cada 3 metros de distância do empurrão adicionados
-		2: 
-			nomeMod = "Adicionar Vantagem/Desvantagem";
-			efeitoMod = "Concede ao feitiço a capacidade de atribuir para uma criatura vantagem ou desvantagem em um dos próximos tipos de jogadas: jogada de ataque, Testes de Habilidade ou Testes de Resistência.
-Deve ser escolhido apenas um dos tipos (vantagem +2 ou desvantagem -3), que dura até o início do seu próximo turno ou até o final do próximo turno de uma outra criatura afetada, caso não aumente.";
-			exigenciaMod = "Nenhuma";
-			custoMod = 4;
 		3: 
 			nomeMod = "Aumentar Alcance";
 			efeitoMod = "Concede ao feitiço a capacidade de aumentar o seu alcance de “Toque” para “Linha”.";
@@ -182,11 +219,4 @@ Deve ser escolhido apenas um dos tipos (vantagem +2 ou desvantagem -3), que dura
 	labelModificador.text = "Modificador: " + nomeMod;
 	labelExigencia.text = "Exigência: " + exigenciaMod;
 	labelCustoMod.text = "Custo: " + str(custoMod);
-	pass # Replace with function body.
-
-
-
-
-func _on_button_modificador_add_0_valor_empurrao(value:float) -> void:
-	print("valor empurrão: " + str(value));
 	pass # Replace with function body.
