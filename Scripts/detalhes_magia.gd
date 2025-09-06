@@ -281,11 +281,6 @@ func _on_button_modificador_add_0_botao_toq_dist() -> void:
 
 func _on_option_controle_item_selected(index:int) -> void:
 	match index:
-		8: 
-			nomeMod = "Toque a Distância";
-			efeitoMod = "Concede ao feitiço um ataque de toque a distancia ignorando a CA de equipamento não magico mas não de feitiço.";
-			exigenciaMod = "O feitiço deve ser a distancia e ter a característica “AUMENTAR ALCANCE”";
-			custoMod = 8;
 		9: 
 			nomeMod = "Multiplicar";
 			efeitoMod = "Concede ao feitiço a capacidade de ter vários alvos, como por exemplo invocar varias paredes, invocar vários lacaios, laminas que atingem varias pessoas em distancia de linha, caso seja um feitiço que causa dano, o alvo só recebe dano de uma só área, caso elas se sobreponham";
