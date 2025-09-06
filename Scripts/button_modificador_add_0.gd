@@ -26,6 +26,11 @@ signal botao_controle_cirurgico();
 signal botao_duracao_up();
 signal valor_duracao(value:float);
 
+signal botao_acao();
+signal acao_selecionada(index:int);
+
+signal botao_toq_dist();
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	panelVBoxBack.visible = false;
@@ -109,3 +114,17 @@ func _on_button_duracao_up_pressed() -> void:
 func _on_v_slider_duracao_up_value_changed(value:float) -> void:
 	valor_duracao.emit(value);
 #endregion
+
+
+func _on_menu_button_quick_cast_pressed() -> void:
+	_sliders_invisivel();
+	botao_acao.emit();
+
+
+func _on_menu_button_quick_cast_acao_selecionada(index:int) -> void:
+	acao_selecionada.emit(index);
+
+
+func _on_button_toq_distancia_pressed() -> void:
+	_sliders_invisivel();
+	botao_toq_dist.emit();

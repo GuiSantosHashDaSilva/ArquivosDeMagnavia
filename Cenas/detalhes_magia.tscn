@@ -254,6 +254,8 @@ offset_bottom = 144.0
 
 [connection signal="pressed" from="mainPanel/buttonVoltar" to="." method="_on_button_voltar_pressed"]
 [connection signal="item_selected" from="mainPanel/panelCaracteristicas/VBoxContainer/optionControle" to="." method="_on_option_controle_item_selected"]
+[connection signal="acao_selecionada" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_acao_selecionada"]
+[connection signal="botao_acao" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_acao"]
 [connection signal="botao_add_vantagem_desv" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_add_vantagem_desv"]
 [connection signal="botao_alcance_up" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_alcance_up"]
 [connection signal="botao_area_up" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_area_up"]
@@ -261,6 +263,7 @@ offset_bottom = 144.0
 [connection signal="botao_duracao_up" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_duracao_up"]
 [connection signal="botao_empurrao" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_empurrao"]
 [connection signal="botao_status" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_status"]
+[connection signal="botao_toq_dist" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_toq_dist"]
 [connection signal="status_selecionado" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_status_selecionado"]
 [connection signal="valor_alcance" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_valor_alcance"]
 [connection signal="valor_area" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_valor_area"]

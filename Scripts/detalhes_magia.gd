@@ -167,7 +167,7 @@ func _on_button_modificador_add_0_valor_alcance(value:float) -> void:
 		valorSliderAlcanceOld = value;
 #endregion
 
-#region aumetar_area
+#region aumentar_área
 func _on_button_modificador_add_0_botao_area_up() -> void:
 	nomeMod = "Aumentar Área";
 	efeitoMod = "Concede ao feitiço a capacidade de criar uma área onde o feitiço terá ação, como “Cone”, “Esfera”, “Cilindro”, ou “Cubo”.";
@@ -203,6 +203,7 @@ func _on_button_modificador_add_0_botao_controle_cirurgico() -> void:
 	custoMod = 5;
 	_atualizar_label_mod();
 
+#region duração_prolongada
 func _on_button_modificador_add_0_botao_duracao_up() -> void:
 	nomeMod = "Duração Prolongada";
 	efeitoMod = "Concede ao feitiço a capacidade de estender a duração de condições ou efeitos.";
@@ -243,15 +244,43 @@ func _on_button_modificador_add_0_valor_duracao(value:float) -> void:
 			duracaoPos60 = duracaoDobrada;
 			labelCustoMod.text = "Custo: " + str(custoMod);
 			valorSliderDuracaoOld = value;
+#endregion
 
+#region feitiço_rápido
+func _on_button_modificador_add_0_botao_acao() -> void:
+	nomeMod = "Feitiço Rápido";
+	efeitoMod = "Concede ao feitiço a possibilidade de tornar sua execução possível com uma “Ação Bônus” ou “Reação”.";
+	exigenciaMod = "Feitiços que tenham o requisito do seu uso como “Ação”.";
+	custoMod = 0;
+	_atualizar_label_mod();
+
+func _on_button_modificador_add_0_acao_selecionada(index:int) -> void:
+	if not GerenciadorPersonagens.feiticoSelecionado.tempoExecucao.to_lower() == "ação":
+		print("precisa ser ação");
+		return;
+	match index:
+		0:
+			print("Ação bônus")
+			custoMod = GerenciadorPersonagens.feiticoSelecionado.grau * 2;
+			labelCustoMod.text = "Custo: " + str(custoMod);
+		1:
+			print("Reação")
+			custoMod = GerenciadorPersonagens.feiticoSelecionado.grau * 4;
+			labelCustoMod.text = "Custo: " + str(custoMod);
+#endregion
+
+func _on_button_modificador_add_0_botao_toq_dist() -> void:
+	if not GerenciadorPersonagens.feiticoSelecionado.alcance > 0:
+		labelExigencia.text = "Exigência: O feitiço deve ser a distancia e ter a característica “AUMENTAR ALCANCE”";
+		return;
+	nomeMod = "Toque a Distância";
+	efeitoMod = "Concede ao feitiço um ataque de toque a distancia ignorando a CA de equipamento não magico mas não de feitiço.";
+	exigenciaMod = "O feitiço deve ser a distancia e ter a característica “AUMENTAR ALCANCE”";
+	custoMod = 8;
+	_atualizar_label_mod();
 
 func _on_option_controle_item_selected(index:int) -> void:
 	match index:
-		7: 
-			nomeMod = "Feitiço Rápido";
-			efeitoMod = "Concede ao feitiço a possibilidade de tornar sua execução possível com uma “Ação Bônus” ou “Reação”.";
-			exigenciaMod = "Feitiços que tenham o requisito do seu uso como “Ação”.";
-			custoMod = 0; #Valor de PM igual ao dobro grau do feitiço para ação bônus, e o quadruplo para reação.
 		8: 
 			nomeMod = "Toque a Distância";
 			efeitoMod = "Concede ao feitiço um ataque de toque a distancia ignorando a CA de equipamento não magico mas não de feitiço.";
