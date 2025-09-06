@@ -31,6 +31,8 @@ var indiceTempoExec: int;
 var qtdAreaP: int = 0;
 var qtdAreaS: int = 0;
 var valorGrau: int = 1;
+var duracao: int = 0;
+var alcance: int = 0;
 var listaAreasP: Array[String] = [];
 var listaAreasS: Array[String] = [];
 var listaComponentes: Array[String] = [];
@@ -50,8 +52,6 @@ func _ready() -> void:
 func _on_button_criar_magia_pressed() -> void:
 	var nome: String = lineNome.text;
 	var tempoExecucao: String = optionButtonExec.get_item_text(indiceTempoExec);
-	var duracao: String = lineDuracao.text;
-	var alcance: String = lineAlcance.text;
 	var descricao: String = textDescricao.text;
 	GerenciadorPersonagens.adicionarFeitico(nome,valorGrau,listaAreasP,listaAreasS,testeRes,CD,tempoExecucao,duracao,listaComponentes,ataque,custo,alcance,listaAoE,descricao);
 	get_tree().change_scene_to_file("res://Cenas/MainMenu.tscn");

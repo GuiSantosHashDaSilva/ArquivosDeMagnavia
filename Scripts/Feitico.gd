@@ -10,10 +10,10 @@ var area2: Array[String];
 var testeResistencia: String;
 var CD: int;
 var tempoExecucao: String;
-var duracao: String;
+var duracao: int;
 var componentes: Array[String];
 var areaEfeito: Array[String];
-var alcance: String;
+var alcance: int;
 var ataque: int;
 var custo: int;
 var descricao: String;
@@ -28,11 +28,11 @@ func _init(
 	_testeResistencia: String = "",
 	_CD: int = 0,
 	_tempoExecucao: String = "",
-	_duracao: String = "",
+	_duracao: int = 0,
 	_componentes: Array[String] = [],
 	_ataque: int = 0,
 	_custo: int = 0,
-	_alcance: String = "",
+	_alcance: int = 0,
 	_areaEfeito: Array[String] = [],
 	_descricao: String = ""
 ) -> void:

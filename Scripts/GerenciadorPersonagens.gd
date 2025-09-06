@@ -25,11 +25,11 @@ func adicionarFeitico(nome: String,
 	testeResistencia: String,
 	CD: int,
 	tempoExecucao: String,
-	duracao: String,
+	duracao: int,
 	componentes: Array[String],
 	ataque: int,
 	custo: int,
-	alcance: String,
+	alcance: int,
 	areaEfeito: Array[String],
 	descricao: String) -> void:
 		var novoFeitico: Feitico = Feitico.new(nome,grau,area1,area2,testeResistencia,CD,tempoExecucao,duracao,componentes,ataque,custo,alcance,areaEfeito,descricao)

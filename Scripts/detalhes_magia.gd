@@ -26,10 +26,22 @@ var nomeMod:String;
 var efeitoMod:String;
 var exigenciaMod:String;
 var custoMod:int;
-var dobroGrau: int;
+
+
+#variáveis do modificador "aumentar alcance"
 var alcanceDobrado: int;
 var alcancePos60: int;
 var valorSliderAlcanceOld: float;
+
+#variáveis do modificador "aumentar área
+var areaDobrada: int;
+var areaPos30: int;
+var valorSliderAreaOld: float;
+
+#variáveis do modificador "duração prolongada"
+var duracaoDobrada: int;
+var duracaoPos60: int;
+var valorSliderDuracaoOld: float;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,16 +52,14 @@ func _ready() -> void:
 	labelTesteRes.text = "Teste de Resistência: " + GerenciadorPersonagens.feiticoSelecionado.testeResistencia;
 	labelCD.text = "Classe de Dificuldade: " + str(GerenciadorPersonagens.feiticoSelecionado.CD);
 	labelTempoExec.text = "Tempo de Execução: " + GerenciadorPersonagens.feiticoSelecionado.tempoExecucao;
-	labelDuracao.text = "Duração: " + GerenciadorPersonagens.feiticoSelecionado.duracao;
+	labelDuracao.text = "Duração: " + str(GerenciadorPersonagens.feiticoSelecionado.duracao);
 	labelComponentes.text = "Componentes: " + ", ".join(GerenciadorPersonagens.feiticoSelecionado.componentes);
 	labelAOE.text = "Área de Efeito: " + ", ".join(GerenciadorPersonagens.feiticoSelecionado.areaEfeito);
-	labelAlcance.text = "Alcance: " + GerenciadorPersonagens.feiticoSelecionado.alcance;
+	labelAlcance.text = "Alcance: " + str(GerenciadorPersonagens.feiticoSelecionado.alcance);
 	labelAtaque.text = "Ataque: " + str(GerenciadorPersonagens.feiticoSelecionado.ataque);
 	labelCusto.text = "Custo: " + str(GerenciadorPersonagens.feiticoSelecionado.custo);
 	labelModificadores.text = "Modificadores: " + ", ".join(GerenciadorPersonagens.feiticoSelecionado.modificadores)
 	labelDescricao.text = "Descrição: " + GerenciadorPersonagens.feiticoSelecionado.descricao;
-	
-	dobroGrau = GerenciadorPersonagens.feiticoSelecionado.grau * 2
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,7 +68,7 @@ func _process(delta:float) -> void:
 
 
 func _on_button_voltar_pressed() -> void:
-	get_tree().change_scene_to_file("res://Cenas/MainMenu.tscn");	
+	get_tree().change_scene_to_file("res://Cenas/MainMenu.tscn");
 
 func _atualizar_label_mod() -> void:
 	labelModificador.text = "Modificador: " + nomeMod;
@@ -137,47 +147,106 @@ func _on_button_modificador_add_0_botao_alcance_up() -> void:
 	custoMod = 0;
 	_atualizar_label_mod();
 
-#a função tem um erro caso o alcance inicial não seja 
 func _on_button_modificador_add_0_valor_alcance(value:float) -> void:
-	if int(GerenciadorPersonagens.feiticoSelecionado.alcance) + value <= 60:
+	if GerenciadorPersonagens.feiticoSelecionado.alcance + value <= 60:
 		custoMod = value/6;
 		labelCustoMod.text = "Custo: " + str(custoMod);
-		alcancePos60 = int(GerenciadorPersonagens.feiticoSelecionado.alcance) + value;
+		alcancePos60 = GerenciadorPersonagens.feiticoSelecionado.alcance + value;
 		valorSliderAlcanceOld = value;
-		print("Alcance até 60: " + str(value));
 	elif valorSliderAlcanceOld < value:
 		alcanceDobrado = alcancePos60 * 2;
 		custoMod += 4;
 		alcancePos60 = alcanceDobrado;
 		labelCustoMod.text = "Custo: " + str(custoMod);
 		valorSliderAlcanceOld = value;
-		print("Alcance pós 60: " + str(alcancePos60));
 	else:
 		alcanceDobrado = alcancePos60 / 2;
 		custoMod -= 4;
 		alcancePos60 = alcanceDobrado;
 		labelCustoMod.text = "Custo: " + str(custoMod);
 		valorSliderAlcanceOld = value;
-		print("Alcance pós 60: " + str(alcancePos60));
 #endregion
+
+#region aumetar_area
+func _on_button_modificador_add_0_botao_area_up() -> void:
+	nomeMod = "Aumentar Área";
+	efeitoMod = "Concede ao feitiço a capacidade de criar uma área onde o feitiço terá ação, como “Cone”, “Esfera”, “Cilindro”, ou “Cubo”.";
+	exigenciaMod = "Nenhuma";
+	custoMod = 0;
+	_atualizar_label_mod();
+
+
+func _on_button_modificador_add_0_valor_area(value:float) -> void:
+	if GerenciadorPersonagens.feiticoSelecionado.alcance + value <= 30:
+		custoMod = 2 * (value/3);
+		labelCustoMod.text = "Custo: " + str(custoMod);
+		areaPos30 = GerenciadorPersonagens.feiticoSelecionado.alcance + value;
+		valorSliderAreaOld = value;
+	elif valorSliderAreaOld < value:
+		areaDobrada = areaPos30 * 2;
+		custoMod += 8;
+		areaPos30 = areaDobrada;
+		labelCustoMod.text = "Custo: " + str(custoMod);
+		valorSliderAreaOld = value;
+	else:
+		areaDobrada = areaPos30 / 2;
+		custoMod -= 8;
+		areaPos30 = areaDobrada;
+		labelCustoMod.text = "Custo: " + str(custoMod);
+		valorSliderAreaOld = value;
+#endregion
+
+func _on_button_modificador_add_0_botao_controle_cirurgico() -> void:
+	nomeMod = "Controle Cirurgíco";
+	efeitoMod = "Concede ao feitiço a capacidade de manter criaturas aliadas e o conjurador seguras na área do feitiço. Ao executar, você pode escolher um número de criaturas igual ao grau, dentro da área do feitiço, para não sofrer nenhum dano ou condição.";
+	exigenciaMod = "Um feitiço que obriga outras criaturas a realizarem um Teste de Resistência para não sofrer dano ou condição.";
+	custoMod = 5;
+	_atualizar_label_mod();
+
+func _on_button_modificador_add_0_botao_duracao_up() -> void:
+	nomeMod = "Duração Prolongada";
+	efeitoMod = "Concede ao feitiço a capacidade de estender a duração de condições ou efeitos.";
+	exigenciaMod = "O feitiço deve ter algum efeito ou condição.";
+	custoMod = 0;
+	_atualizar_label_mod();
+
+func _on_button_modificador_add_0_valor_duracao(value:float) -> void:
+	if GerenciadorPersonagens.feiticoSelecionado.duracao + value <= 60:
+		if GerenciadorPersonagens.feiticoSelecionado.duracao + value == 1 and valorSliderDuracaoOld == 0:
+			custoMod += 4;
+			labelCustoMod.text = "Custo: " + str(custoMod);
+			valorSliderDuracaoOld = value;
+		elif valorSliderDuracaoOld < value:
+			custoMod += 2;
+			labelCustoMod.text = "Custo: " + str(custoMod);
+			duracaoPos60 = GerenciadorPersonagens.feiticoSelecionado.duracao + value;
+			valorSliderDuracaoOld = value;
+	elif valorSliderDuracaoOld < value:
+		duracaoDobrada = duracaoPos60 * 2;
+		custoMod += 8;
+		duracaoPos60 = duracaoDobrada;
+		labelCustoMod.text = "Custo: " + str(custoMod);
+		valorSliderDuracaoOld = value;
+	if value < valorSliderDuracaoOld:
+		if valorSliderDuracaoOld <= 60:
+			if valorSliderDuracaoOld == 1 and value < valorSliderDuracaoOld:
+				custoMod -= 4;
+				labelCustoMod.text = "Custo: " + str(custoMod);
+				valorSliderDuracaoOld = value;
+			else:
+				custoMod -= 2;
+				labelCustoMod.text = "Custo: " + str(custoMod);
+				valorSliderDuracaoOld = value;
+		elif valorSliderDuracaoOld > 60:
+			duracaoDobrada = duracaoPos60 / 2;
+			custoMod -= 8;
+			duracaoPos60 = duracaoDobrada;
+			labelCustoMod.text = "Custo: " + str(custoMod);
+			valorSliderDuracaoOld = value;
+
 
 func _on_option_controle_item_selected(index:int) -> void:
 	match index:
-		4: 
-			nomeMod = "Aumentar Área";
-			efeitoMod = "Concede ao feitiço a capacidade de criar uma área onde o feitiço terá ação, como “Cone”, “Esfera”, “Cilindro”, ou “Cubo”.";
-			exigenciaMod = "Nenhuma.";
-			custoMod = 0; #2 PM para cada 3 metros adicionais caso chegue a 30 metros pode se usar 8 PM para se duplicar cada vez.
-		5: 
-			nomeMod = "Controle Cirurgíco";
-			efeitoMod = "Concede ao feitiço a capacidade de manter criaturas aliadas e o conjurador seguras na área do feitiço. Ao executar, você pode escolher um número de criaturas igual ao grau, dentro da área do feitiço, para não sofrer nenhum dano ou condição.";
-			exigenciaMod = "Um feitiço que obriga outras criaturas a realizarem um Teste de Resistência para não sofrer dano ou condição.";
-			custoMod = 5;
-		6: 
-			nomeMod = "Duração Prolongada";
-			efeitoMod = "Concede ao feitiço a capacidade de estender a duração de condições ou efeitos.";
-			exigenciaMod = "O feitiço deve ter algum efeito ou condição.";
-			custoMod = 0; #4 PM para o primeiro minuto e 2 PM para cada minuto posterior, depois de 60 minutos caso gaste 8 PM dobra.
 		7: 
 			nomeMod = "Feitiço Rápido";
 			efeitoMod = "Concede ao feitiço a possibilidade de tornar sua execução possível com uma “Ação Bônus” ou “Reação”.";
@@ -202,7 +271,7 @@ func _on_option_controle_item_selected(index:int) -> void:
 			nomeMod = "Feitiço de Uma Só Mão";
 			efeitoMod = "Concede ao feitiço a necessidade de se usar apenas uma mão para se realizar o feitiço, podendo usar a outra mão livre para atacar se quiser.";
 			exigenciaMod = "Nenhuma.";
-			custoMod = dobroGrau; 
+			custoMod = 0 #dobro do grau; 
 		12: 
 			nomeMod = "Alteração de Teste de Resistência";
 			efeitoMod = "Troca o teste de resistência do feitiço.";
