@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://btrvnua8ljb3n"]
+[gd_scene load_steps=7 format=3 uid="uid://btrvnua8ljb3n"]
 
 [ext_resource type="Script" path="res://Scripts/button_modificador_add_0.gd" id="1_7o1s0"]
 [ext_resource type="Script" path="res://Scripts/menu_button_add_status.gd" id="2_cln6w"]
-[ext_resource type="Script" path="res://Cenas/menu_button_quick_cast.gd" id="3_ig1de"]
+[ext_resource type="Script" path="res://Scripts/menu_button_quick_cast.gd" id="3_ig1de"]
+[ext_resource type="Script" path="res://Scripts/menu_button_mudar_res.gd" id="4_nycq6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rh5x6"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -10,7 +11,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhyv0"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="ButtonModificadorAdd0" type="Button" node_paths=PackedStringArray("panelVBoxBack", "vBoxPopUp", "vSliderEmpurrao", "vSliderAlcance", "vSliderArea", "vSliderDuracaoUp")]
+[node name="ButtonModificadorAdd0" type="Button" node_paths=PackedStringArray("panelVBoxBack", "vBoxPopUp", "vSliderEmpurrao", "vSliderAlcance", "vSliderArea", "vSliderDuracaoUp", "vSliderCdUp")]
 custom_minimum_size = Vector2(301, 31)
 offset_left = 407.0
 offset_top = 38.0
@@ -25,19 +26,22 @@ vSliderEmpurrao = NodePath("vSliderEmpurrao")
 vSliderAlcance = NodePath("vSliderAlcanceUp")
 vSliderArea = NodePath("vSliderAreaUp")
 vSliderDuracaoUp = NodePath("vSliderDuracaoUp")
+vSliderCdUp = NodePath("vSliderCdUp")
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 custom_minimum_size = Vector2(301, 0)
 layout_mode = 0
 offset_top = 32.0
 offset_right = 301.0
-offset_bottom = 366.0
+offset_bottom = 502.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 0
-offset_top = 31.0
+offset_top = 32.0
 offset_right = 301.0
-offset_bottom = 363.0
+offset_bottom = 502.0
 
 [node name="menuButtonAddStatus" type="MenuButton" parent="VBoxContainer"]
 layout_mode = 2
@@ -79,6 +83,27 @@ script = ExtResource("3_ig1de")
 layout_mode = 2
 text = "Toque à Distância"
 
+[node name="buttonMultiplicar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Multiplicar"
+
+[node name="buttonAumentarCd" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Aumentar CD"
+
+[node name="buttonUmaMao" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Feitiço de Uma Só Mão"
+
+[node name="menuButtonMudarRes" type="MenuButton" parent="VBoxContainer"]
+layout_mode = 2
+text = "Alteração de Teste de Resistência"
+script = ExtResource("4_nycq6")
+
+[node name="buttonAlcToque" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Alcance de Toque"
+
 [node name="vSliderEmpurrao" type="VSlider" parent="."]
 visible = false
 layout_mode = 0
@@ -118,6 +143,16 @@ offset_right = 324.0
 offset_bottom = 221.0
 rounded = true
 
+[node name="vSliderCdUp" type="VSlider" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 308.0
+offset_top = 25.0
+offset_right = 324.0
+offset_bottom = 221.0
+max_value = 20.0
+rounded = true
+
 [connection signal="toggled" from="." to="." method="_on_toggled"]
 [connection signal="pressed" from="VBoxContainer/menuButtonAddStatus" to="." method="_on_menu_button_add_status_pressed"]
 [connection signal="status_selecionado" from="VBoxContainer/menuButtonAddStatus" to="." method="_on_menu_button_add_status_status_selecionado"]
@@ -130,7 +165,14 @@ rounded = true
 [connection signal="acao_selecionada" from="VBoxContainer/menuButtonQuickCast" to="." method="_on_menu_button_quick_cast_acao_selecionada"]
 [connection signal="pressed" from="VBoxContainer/menuButtonQuickCast" to="." method="_on_menu_button_quick_cast_pressed"]
 [connection signal="pressed" from="VBoxContainer/buttonToqDistancia" to="." method="_on_button_toq_distancia_pressed"]
+[connection signal="pressed" from="VBoxContainer/buttonMultiplicar" to="." method="_on_button_multiplicar_pressed"]
+[connection signal="pressed" from="VBoxContainer/buttonAumentarCd" to="." method="_on_button_aumentar_cd_pressed"]
+[connection signal="pressed" from="VBoxContainer/buttonUmaMao" to="." method="_on_button_uma_mao_pressed"]
+[connection signal="pressed" from="VBoxContainer/menuButtonMudarRes" to="." method="_on_menu_button_mudar_res_pressed"]
+[connection signal="res_selecionada" from="VBoxContainer/menuButtonMudarRes" to="." method="_on_menu_button_mudar_res_res_selecionada"]
+[connection signal="pressed" from="VBoxContainer/buttonAlcToque" to="." method="_on_button_alc_toque_pressed"]
 [connection signal="value_changed" from="vSliderEmpurrao" to="." method="_on_v_slider_empurrao_value_changed"]
 [connection signal="value_changed" from="vSliderAlcanceUp" to="." method="_on_v_slider_alcance_up_value_changed"]
 [connection signal="value_changed" from="vSliderAreaUp" to="." method="_on_v_slider_area_up_value_changed"]
 [connection signal="value_changed" from="vSliderDuracaoUp" to="." method="_on_v_slider_duracao_up_value_changed"]
+[connection signal="value_changed" from="vSliderCdUp" to="." method="_on_v_slider_cd_up_value_changed"]

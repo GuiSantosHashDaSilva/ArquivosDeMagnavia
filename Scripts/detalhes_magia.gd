@@ -22,6 +22,7 @@ extends Control
 @export var labelEfeito: RichTextLabel;
 #endregion
 
+#region variáveis de instância
 var nomeMod:String;
 var efeitoMod:String;
 var exigenciaMod:String;
@@ -42,6 +43,12 @@ var valorSliderAreaOld: float;
 var duracaoDobrada: int;
 var duracaoPos60: int;
 var valorSliderDuracaoOld: float;
+
+#variavél do modificador "mudar teste de resistência"
+var res_mod: String;
+var res_selecionada: String;
+
+#endregion
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -271,42 +278,77 @@ func _on_button_modificador_add_0_acao_selecionada(index:int) -> void:
 
 func _on_button_modificador_add_0_botao_toq_dist() -> void:
 	if not GerenciadorPersonagens.feiticoSelecionado.alcance > 0:
-		labelExigencia.text = "Exigência: O feitiço deve ser a distancia e ter a característica “AUMENTAR ALCANCE”";
+		labelExigencia.text = "Exigência: O feitiço deve ser a distância e ter a característica “AUMENTAR ALCANCE”";
 		return;
 	nomeMod = "Toque a Distância";
-	efeitoMod = "Concede ao feitiço um ataque de toque a distancia ignorando a CA de equipamento não magico mas não de feitiço.";
+	efeitoMod = "Concede ao feitiço um ataque de toque a distância ignorando a CA de equipamento não magico mas não de feitiço.";
 	exigenciaMod = "O feitiço deve ser a distancia e ter a característica “AUMENTAR ALCANCE”";
 	custoMod = 8;
 	_atualizar_label_mod();
 
-func _on_option_controle_item_selected(index:int) -> void:
-	match index:
-		9: 
-			nomeMod = "Multiplicar";
-			efeitoMod = "Concede ao feitiço a capacidade de ter vários alvos, como por exemplo invocar varias paredes, invocar vários lacaios, laminas que atingem varias pessoas em distancia de linha, caso seja um feitiço que causa dano, o alvo só recebe dano de uma só área, caso elas se sobreponham";
-			exigenciaMod = "O feitiço deve ser a distancia";
-			custoMod = 0; #5 PM para cada vez que for multiplicado
-		10: 
-			nomeMod = "Aumento de CD";
-			efeitoMod = "Concede ao feitiço mais potência para tornar mais difícil de se resistir a ele.";
-			exigenciaMod = "O feitiço deve ter CD";
-			custoMod = 0; #2 PM para cada +1 = Máximo de aumentos igual ao dobro do grau
-		11: 
-			nomeMod = "Feitiço de Uma Só Mão";
-			efeitoMod = "Concede ao feitiço a necessidade de se usar apenas uma mão para se realizar o feitiço, podendo usar a outra mão livre para atacar se quiser.";
-			exigenciaMod = "Nenhuma.";
-			custoMod = 0 #dobro do grau; 
-		12: 
-			nomeMod = "Alteração de Teste de Resistência";
-			efeitoMod = "Troca o teste de resistência do feitiço.";
-			exigenciaMod = "Nehuma.";
-			custoMod = 20;
-		13: 
-			nomeMod = "Alcance de Toque";
-			efeitoMod = "Faz com que o alcance do feitiço seja definido para toque, necessitando que toque no alvo com seu corpo ou armas corpo a corpo, além disso faz com que caso use o feitiço para se atacar, as armas utilizadas ou não, se beneficia dos bônus de dano delas quando forem aplicados no dano do feitiço";
-			exigenciaMod = "Nenhuma";
-			custoMod = 1;
-	labelModificador.text = "Modificador: " + nomeMod;
-	labelExigencia.text = "Exigência: " + exigenciaMod;
+
+func _on_button_modificador_add_0_botao_multiplicar() -> void:
+	if not GerenciadorPersonagens.feiticoSelecionado.alcance > 0:
+		labelExigencia.text = "Exigência: O feitiço deve ser a distância"
+		return;
+	nomeMod = "Multiplicar";
+	efeitoMod = "Concede ao feitiço a capacidade de ter vários alvos, como por exemplo invocar varias paredes, invocar vários lacaios, laminas que atingem varias pessoas em distancia de linha, caso seja um feitiço que causa dano, o alvo só recebe dano de uma só área, caso elas se sobreponham";
+	exigenciaMod = "O feitiço deve ser a distância";
+	custoMod = 5;
+	_atualizar_label_mod();
+
+#region aumentar_cd
+func _on_button_modificador_add_0_botao_cd_up() -> void:
+	if not GerenciadorPersonagens.feiticoSelecionado.CD > 0:
+		labelExigencia.text = "Exigência: O feitiço deve ter CD"
+		return
+	nomeMod = "Aumento de CD";
+	efeitoMod = "Concede ao feitiço mais potência para tornar mais difícil de se resistir a ele.";
+	exigenciaMod = "O feitiço deve ter CD";
+	custoMod = 0;
+	_atualizar_label_mod();
+
+func _on_button_modificador_add_0_valor_cd(value:float) -> void:
+	if not GerenciadorPersonagens.feiticoSelecionado.CD > 0:
+		labelExigencia.text = "Exigência: "
+		labelExigencia.text = "Exigência: O feitiço deve ter CD"
+		return;
+	if value > GerenciadorPersonagens.feiticoSelecionado.grau * 2:
+		print("Limite atingido");
+		return;
+	custoMod = 2 * value;
 	labelCustoMod.text = "Custo: " + str(custoMod);
-	pass # Replace with function body.
+#endregion
+
+func _on_button_modificador_add_0_botao_uma_mao() -> void:
+	nomeMod = "Feitiço de Uma Só Mão";
+	efeitoMod = "Concede ao feitiço a necessidade de se usar apenas uma mão para se realizar o feitiço, podendo usar a outra mão livre para atacar se quiser.";
+	exigenciaMod = "Nenhuma.";
+	custoMod = GerenciadorPersonagens.feiticoSelecionado.grau * 2;
+	_atualizar_label_mod();
+
+#region alterar_teste_res
+func _on_button_modificador_add_0_botao_mudar_res() -> void:
+	nomeMod = "Alteração de Teste de Resistência";
+	efeitoMod = "Troca o teste de resistência do feitiço.";
+	exigenciaMod = "Nehuma.";
+	custoMod = 20;
+	_atualizar_label_mod();
+
+func _on_button_modificador_add_0_res_selecionada(index:int) -> void:
+	match index:
+		0: res_selecionada = "Reflexo";
+		1: res_selecionada = "Vontade";
+		2: res_selecionada = "Fortitude";
+	if res_selecionada.to_lower() == GerenciadorPersonagens.feiticoSelecionado.testeResistencia.to_lower():
+		print("Teste de resistência atual");
+		return;
+	res_mod = res_selecionada;
+#endregion
+
+
+func _on_button_modificador_add_0_botao_alc_toque() -> void:
+	nomeMod = "Alcance de Toque";
+	efeitoMod = "Faz com que o alcance do feitiço seja definido para toque, necessitando que toque no alvo com seu corpo ou armas corpo a corpo, além disso faz com que caso use o feitiço para se atacar, as armas utilizadas ou não, se beneficia dos bônus de dano delas quando forem aplicados no dano do feitiço";
+	exigenciaMod = "Nenhuma";
+	custoMod = 1;

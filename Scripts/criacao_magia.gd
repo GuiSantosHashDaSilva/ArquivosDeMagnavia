@@ -58,7 +58,9 @@ func _on_button_criar_magia_pressed() -> void:
 
 func _on_line_nome_text_changed(new_text:String) -> void: labelNome.text = "Nome: " + new_text;
 
-func _on_line_alcance_text_changed(new_text:String) -> void: labelAlcance.text = "Alcance: " + new_text;
+func _on_line_alcance_text_changed(new_text:String) -> void:
+	labelAlcance.text = "Alcance: " + new_text;
+	self.alcance = int(labelAlcance.text);
 
 func _on_line_duracao_text_changed(new_text:String) -> void: labelDuracao.text = "Duração: " + new_text;
 

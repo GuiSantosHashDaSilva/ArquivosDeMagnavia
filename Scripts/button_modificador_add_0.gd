@@ -6,7 +6,9 @@ extends Button
 @export var vSliderAlcance: VSlider;
 @export var vSliderArea: VSlider;
 @export var vSliderDuracaoUp: VSlider;
+@export var vSliderCdUp: VSlider;
 
+#region sinais
 signal botao_status();
 signal status_selecionado(index:int);
 
@@ -30,6 +32,19 @@ signal botao_acao();
 signal acao_selecionada(index:int);
 
 signal botao_toq_dist();
+
+signal botao_multiplicar();
+
+signal botao_cd_up();
+signal valor_cd(value:float);
+
+signal botao_uma_mao();
+
+signal botao_mudar_res();
+signal res_selecionada(index:int);
+
+signal botao_alc_toque();
+#endregion
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -57,6 +72,7 @@ func _sliders_invisivel() -> void:
 	vSliderAlcance.visible = false;
 	vSliderArea.visible = false;
 	vSliderDuracaoUp.visible = false;
+	vSliderCdUp.visible = false;
 
 #region mod add_status
 func _on_menu_button_add_status_pressed() ->void:
@@ -105,7 +121,7 @@ func _on_button_controle_cirurgico_pressed() -> void:
 	_sliders_invisivel();
 	botao_controle_cirurgico.emit();
 
-#region mod duração up
+#region mod duração_up
 func _on_button_duracao_up_pressed() -> void:
 	_sliders_invisivel();
 	vSliderDuracaoUp.visible = true;
@@ -116,15 +132,46 @@ func _on_v_slider_duracao_up_value_changed(value:float) -> void:
 #endregion
 
 
+#region mod feitiço_rápido
 func _on_menu_button_quick_cast_pressed() -> void:
 	_sliders_invisivel();
 	botao_acao.emit();
 
-
 func _on_menu_button_quick_cast_acao_selecionada(index:int) -> void:
 	acao_selecionada.emit(index);
-
+#endregion
 
 func _on_button_toq_distancia_pressed() -> void:
 	_sliders_invisivel();
 	botao_toq_dist.emit();
+
+func _on_button_multiplicar_pressed() -> void:
+	_sliders_invisivel();
+	botao_multiplicar.emit();
+
+#region mod aumentar_cd
+func _on_button_aumentar_cd_pressed() -> void:
+	_sliders_invisivel();
+	vSliderCdUp.visible = true;
+	botao_cd_up.emit();
+
+func _on_v_slider_cd_up_value_changed(value:float) -> void:
+	valor_cd.emit(value);
+#endregion
+
+func _on_button_uma_mao_pressed() -> void:
+	_sliders_invisivel();
+	botao_uma_mao.emit()
+
+#region mod alterar_teste_res
+func _on_menu_button_mudar_res_pressed() -> void:
+	_sliders_invisivel();
+	botao_mudar_res.emit();
+
+func _on_menu_button_mudar_res_res_selecionada(index:int) -> void:
+	res_selecionada.emit(index);
+#endregion
+
+func _on_button_alc_toque_pressed() -> void:
+	_sliders_invisivel();
+	botao_alc_toque.emit();

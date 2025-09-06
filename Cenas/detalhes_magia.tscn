@@ -155,64 +155,6 @@ offset_right = -0.0960693
 offset_bottom = 0.311951
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="mainPanel/panelCaracteristicas"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.545607
-anchor_bottom = 0.439969
-offset_right = -0.175018
-offset_bottom = -0.0649872
-metadata/_edit_use_anchors_ = true
-
-[node name="optionControle" type="OptionButton" parent="mainPanel/panelCaracteristicas/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-tooltip_text = "Modificadores de controle"
-allow_reselect = true
-item_count = 14
-popup/item_0/text = "Adicionar Status"
-popup/item_1/text = "Adicionar Empurrão"
-popup/item_1/id = 1
-popup/item_2/text = "Adicionar Vantagem/Desvantagem"
-popup/item_2/id = 2
-popup/item_3/text = "Aumentar Alcance"
-popup/item_3/id = 3
-popup/item_4/text = "Aumentar Área"
-popup/item_4/id = 4
-popup/item_5/text = "Controle Cirurgíco"
-popup/item_5/id = 5
-popup/item_6/text = "Duração Prolongada"
-popup/item_6/id = 6
-popup/item_7/text = "Feitiço Rápido"
-popup/item_7/id = 7
-popup/item_8/text = "Toque a Distância"
-popup/item_8/id = 8
-popup/item_9/text = "Multiplicar"
-popup/item_9/id = 9
-popup/item_10/text = "Aumento de CD"
-popup/item_10/id = 10
-popup/item_11/text = "Feitiço de uma mão só"
-popup/item_11/id = 11
-popup/item_12/text = "Alteração de Teste de Resistência"
-popup/item_12/id = 12
-popup/item_13/text = "Alcance de Toque"
-popup/item_13/id = 13
-
-[node name="optionSuporte" type="OptionButton" parent="mainPanel/panelCaracteristicas/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-tooltip_text = "Modificadores de suporte"
-
-[node name="optionOfensivo" type="OptionButton" parent="mainPanel/panelCaracteristicas/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-tooltip_text = "Modificadores ofensivos"
-
-[node name="optionReducao" type="OptionButton" parent="mainPanel/panelCaracteristicas/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-tooltip_text = "Modificadores de redução de custo"
-
 [node name="VBoxContainer2" type="VBoxContainer" parent="mainPanel/panelCaracteristicas"]
 layout_mode = 0
 offset_left = 1.0
@@ -245,27 +187,38 @@ custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 text = "Efeito:"
 
-[node name="ButtonModificadorAdd0" parent="mainPanel" instance=ExtResource("2_0c3mr")]
-layout_mode = 0
-offset_left = 233.0
-offset_top = 113.0
-offset_right = 534.0
-offset_bottom = 144.0
+[node name="VBoxContainer" type="VBoxContainer" parent="mainPanel/panelCaracteristicas"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.545608
+anchor_bottom = 0.439969
+offset_right = -0.175018
+offset_bottom = -0.0649872
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonModificadorAdd0" parent="mainPanel/panelCaracteristicas/VBoxContainer" instance=ExtResource("2_0c3mr")]
+layout_mode = 2
 
 [connection signal="pressed" from="mainPanel/buttonVoltar" to="." method="_on_button_voltar_pressed"]
-[connection signal="item_selected" from="mainPanel/panelCaracteristicas/VBoxContainer/optionControle" to="." method="_on_option_controle_item_selected"]
-[connection signal="acao_selecionada" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_acao_selecionada"]
-[connection signal="botao_acao" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_acao"]
-[connection signal="botao_add_vantagem_desv" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_add_vantagem_desv"]
-[connection signal="botao_alcance_up" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_alcance_up"]
-[connection signal="botao_area_up" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_area_up"]
-[connection signal="botao_controle_cirurgico" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_controle_cirurgico"]
-[connection signal="botao_duracao_up" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_duracao_up"]
-[connection signal="botao_empurrao" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_empurrao"]
-[connection signal="botao_status" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_status"]
-[connection signal="botao_toq_dist" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_toq_dist"]
-[connection signal="status_selecionado" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_status_selecionado"]
-[connection signal="valor_alcance" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_valor_alcance"]
-[connection signal="valor_area" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_valor_area"]
-[connection signal="valor_duracao" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_valor_duracao"]
-[connection signal="valor_empurrao" from="mainPanel/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_valor_empurrao"]
+[connection signal="acao_selecionada" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_acao_selecionada"]
+[connection signal="botao_acao" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_acao"]
+[connection signal="botao_add_vantagem_desv" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_add_vantagem_desv"]
+[connection signal="botao_alc_toque" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_alc_toque"]
+[connection signal="botao_alcance_up" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_alcance_up"]
+[connection signal="botao_area_up" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_area_up"]
+[connection signal="botao_cd_up" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_cd_up"]
+[connection signal="botao_controle_cirurgico" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_controle_cirurgico"]
+[connection signal="botao_duracao_up" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_duracao_up"]
+[connection signal="botao_empurrao" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_empurrao"]
+[connection signal="botao_mudar_res" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_mudar_res"]
+[connection signal="botao_multiplicar" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_multiplicar"]
+[connection signal="botao_status" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_status"]
+[connection signal="botao_toq_dist" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_toq_dist"]
+[connection signal="botao_uma_mao" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_botao_uma_mao"]
+[connection signal="res_selecionada" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_res_selecionada"]
+[connection signal="status_selecionado" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_status_selecionado"]
+[connection signal="valor_alcance" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_valor_alcance"]
+[connection signal="valor_area" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_valor_area"]
+[connection signal="valor_cd" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_valor_cd"]
+[connection signal="valor_duracao" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_valor_duracao"]
+[connection signal="valor_empurrao" from="mainPanel/panelCaracteristicas/VBoxContainer/ButtonModificadorAdd0" to="." method="_on_button_modificador_add_0_valor_empurrao"]
