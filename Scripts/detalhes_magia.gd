@@ -129,6 +129,7 @@ func _on_button_modificador_add_0_botao_add_vantagem_desv() -> void:
 	custoMod = 4;
 	_atualizar_label_mod();
 
+#region aumentar_alcance
 func _on_button_modificador_add_0_botao_alcance_up() -> void:
 	nomeMod = "Aumentar Alcance";
 	efeitoMod = "Concede ao feitiço a capacidade de aumentar o seu alcance de “Toque” para “Linha”.";
@@ -136,7 +137,7 @@ func _on_button_modificador_add_0_botao_alcance_up() -> void:
 	custoMod = 0;
 	_atualizar_label_mod();
 
-
+#a função tem um erro caso o alcance inicial não seja 
 func _on_button_modificador_add_0_valor_alcance(value:float) -> void:
 	if int(GerenciadorPersonagens.feiticoSelecionado.alcance) + value <= 60:
 		custoMod = value/6;
@@ -158,14 +159,10 @@ func _on_button_modificador_add_0_valor_alcance(value:float) -> void:
 		labelCustoMod.text = "Custo: " + str(custoMod);
 		valorSliderAlcanceOld = value;
 		print("Alcance pós 60: " + str(alcancePos60));
+#endregion
 
 func _on_option_controle_item_selected(index:int) -> void:
 	match index:
-		3: 
-			nomeMod = "Aumentar Alcance";
-			efeitoMod = "Concede ao feitiço a capacidade de aumentar o seu alcance de “Toque” para “Linha”.";
-			exigenciaMod = "Nenhuma";
-			custoMod = 0; #1 PM para cada 6 metros adicionais, caso chegue a 60 metros pode se usar 4 PM para se duplicar cada vez.
 		4: 
 			nomeMod = "Aumentar Área";
 			efeitoMod = "Concede ao feitiço a capacidade de criar uma área onde o feitiço terá ação, como “Cone”, “Esfera”, “Cilindro”, ou “Cubo”.";
